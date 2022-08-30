@@ -1,0 +1,11 @@
+{{!-- file struct must be  setup like this --}}
+<ol class="post-list">
+    {{#each posts as |post|}}
+  <li>
+    {{!-- to use partial
+     1 - use the name of the partial file
+     2 - object that is passed in --}}
+    {{> post-info post}}
+  </li>
+  {{/each}}
+</ol>
