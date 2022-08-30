@@ -1,8 +1,7 @@
 const router = require("express").Router();
-const { User, Post, Comment, Vote } = require("../../models");
+const { User, Post, Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
 
-// get all users
 router.get("/", (req, res) => {
   User.findAll({
     attributes: { exclude: ["password"] },
@@ -23,22 +22,22 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: Post,
-        attributes: ["id", "title", "post_url", "created_at"],
+        attributes: [
+          "id",
+          "title",
+          "text_body",
+          "github_repo_url",
+          "created_at",
+        ],
       },
-      {
-        model: Comment,
-        attributes: ["id", "comment_text", "created_at"],
-        include: {
-          model: Post,
-          attributes: ["title"],
-        },
-      },
-      {
-        model: Post,
-        attributes: ["title"],
-        through: Vote,
-        as: "voted_posts",
-      },
+      // {
+      //   model: Comment,
+      //   attributes: ["id", "comment_text", "created_at"],
+      //   include: {
+      //     model: Post,
+      //     attributes: ["title"],
+      //   },
+      // },
     ],
   })
     .then((dbUserData) => {
@@ -60,20 +59,15 @@ router.post("/", (req, res) => {
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
-  })
-    .then((dbUserData) => {
-      req.session.save(() => {
-        req.session.user_id = dbUserData.id;
-        req.session.username = dbUserData.username;
-        req.session.loggedIn = true;
+  }).then((dbUserData) => {
+    req.session.save(() => {
+      req.session.user_id = dbUserData.id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
 
-        res.json(dbUserData);
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
+      res.json(dbUserData);
     });
+  });
 });
 
 router.post("/login", (req, res) => {
@@ -88,14 +82,16 @@ router.post("/login", (req, res) => {
       return;
     }
 
+    // Verify user
     const validPassword = dbUserData.checkPassword(req.body.password);
-
     if (!validPassword) {
+      // TODO: alert user of incorrect password
       res.status(400).json({ message: "Incorrect password!" });
       return;
     }
 
     req.session.save(() => {
+      // declare session variables
       req.session.user_id = dbUserData.id;
       req.session.username = dbUserData.username;
       req.session.loggedIn = true;
@@ -117,8 +113,6 @@ router.post("/logout", withAuth, (req, res) => {
 
 router.put("/:id", withAuth, (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
-
-  // pass in req.body instead to only update what's passed through
   User.update(req.body, {
     individualHooks: true,
     where: {
@@ -126,7 +120,7 @@ router.put("/:id", withAuth, (req, res) => {
     },
   })
     .then((dbUserData) => {
-      if (!dbUserData) {
+      if (!dbUserData[0]) {
         res.status(404).json({ message: "No user found with this id" });
         return;
       }
