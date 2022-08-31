@@ -17,7 +17,7 @@ User.init(
       autoIncrement: true,
     },
     username: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(25),
       allowNull: false,
       unique: true,
     },
@@ -38,7 +38,7 @@ User.init(
       },
     },
     github_username: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(40),
       allowNull: false,
       unique: true,
     },

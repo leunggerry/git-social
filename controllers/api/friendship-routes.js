@@ -1,5 +1,10 @@
 const router = require("express").Router();
-const { Friendship, User } = require("../../models");
+const {
+  User,
+  Friendship,
+  FriendshipStatus,
+  MyStatus,
+} = require("../../models");
 const withAuth = require("../../utils/auth");
 
 router.get("/", (req, res) => {
@@ -8,7 +13,10 @@ router.get("/", (req, res) => {
     include: [
       {
         model: User,
-        attributes: ["username"],
+        attributes: [["username", "requester_username"]],
+      },
+      {
+        model: FriendshipStatus,
       },
     ],
   })

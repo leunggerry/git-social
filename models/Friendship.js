@@ -15,15 +15,22 @@ Friendship.init(
       primaryKey: true,
       allowNull: false,
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: "user",
-        key: "id",
-      },
-    },
+    // requesterId: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: "User",
+    //     key: "id",
+    //   },
+    // },
+    // addresseeId: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: "User",
+    //     key: "id",
+    //   },
+    // },
   },
+
   {
     sequelize,
     freezeTableName: true,

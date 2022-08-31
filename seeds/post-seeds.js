@@ -32,7 +32,6 @@ const postdata = [
     title: "Pellentesque eget nunc.",
     text_body: "Pellentesque eget nunc.",
     github_repo_url: "http://google.ca/nam/nulla/integer.aspx",
-    github_repo_url: "http://google.ca/nam/nulla/integer.aspx",
     user_id: 7,
   },
   {
