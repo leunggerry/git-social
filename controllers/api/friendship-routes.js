@@ -9,14 +9,17 @@ const withAuth = require("../../utils/auth");
 
 router.get("/", (req, res) => {
   Friendship.findAll({
-    attributes: ["requester_id", "addressee_id", "user_id"],
+    attributes: [
+      "requester_id",
+      "addressee_id",
+      "status_code",
+      "requested_date_time",
+      "user_id",
+    ],
     include: [
       {
         model: User,
         attributes: [["username", "requester_username"]],
-      },
-      {
-        model: FriendshipStatus,
       },
     ],
   })
@@ -27,14 +30,73 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/:id", (req, res) => {
+  Friendship.findOne({
+    where: {
+      requesterId: req.params.id,
+    },
+    attributes: [
+      "requester_id",
+      "addressee_id",
+      "status_code",
+      "requested_date_time",
+      "user_id",
+    ],
+    include: [
+      {
+        model: User,
+        attributes: [["username", "requester_username"]],
+      },
+    ],
+  })
+    .then((dbFriendshipData) => {
+      if (!dbFriendshipData) {
+        res
+          .status(404)
+          .json({ message: "No friend request found with this id" });
+        return;
+      }
+      res.json(dbFriendshipData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 router.post("/", (req, res) => {
-  // expects {requester_id: 1, addressee_id: 2, user_id: 1}
+  // expects {requesterId: 1, addresseeId: 2, user_id: 1}
   Friendship.create({
-    requester_id: req.body.requester_id,
-    addressee_id: req.body.addressee_id,
+    requesterId: req.body.requesterId,
+    addresseeId: req.body.addresseeId,
     user_id: req.body.user_id,
   })
     .then((dbFriendshipData) => res.json(dbFriendshipData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.put("/:id", (req, res) => {
+  // expects {statusCode: R|| statusCode: A|| statusCode: D|| statusCode: B}
+  Friendship.update(
+    {
+      statusCode: req.body.statusCode,
+    },
+    {
+      where: {
+        requesterId: req.params.id,
+      },
+    }
+  )
+    .then((dbFriendshipData) => {
+      if (!dbFriendshipData) {
+        res.status(404).json({ message: "No post found with this id" });
+        return;
+      }
+      res.json(dbFriendshipData);
+    })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);

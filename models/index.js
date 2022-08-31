@@ -1,8 +1,8 @@
 const User = require("./User");
 const Post = require("./Post");
 const Friendship = require("./Friendship");
-const FriendshipStatus = require("./FriendshipStatus");
-const MyStatus = require("./MyStatus");
+// const FriendshipStatus = require("./FriendshipStatus");
+// const MyStatus = require("./MyStatus");
 
 /* User, Post relationships 
 start=================================================================================*/
@@ -34,6 +34,10 @@ User.hasMany(Friendship, {
   foreignKey: "addressee_id",
 });
 
+Friendship.belongsTo(User, {
+  foreignKey: "user_id",
+});
+
 // User.belongsToMany(Friendship, {
 //   through: "ThroughTable",
 // }); // through table
@@ -45,24 +49,29 @@ User.hasMany(Friendship, {
 /* End===============================
 =================================================================================*/
 
-/* User, Friendship, FriendshipStatus relationships 
+/* User, Friendship, FriendshipStatus, MyStatus relationships 
 start=================================================================================*/
-// Friendship.hasMany(FriendshipStatus, {
-//   foreignKey: "requester_id_status",
-// });
+// Friendship.hasMany(FriendshipStatus);
 // Friendship.hasMany(FriendshipStatus, {
 //   foreignKey: "addressee_id",
 // });
 
-MyStatus.hasMany(FriendshipStatus, {
-  foreignKey: "status_code",
-});
+// FriendshipStatus.belongsTo(Friendship, {
+//   foreignKey: "requester_id",
+// });
+// FriendshipStatus.belongsTo(Friendship, {
+//   foreignKey: "addressee_id",
+// });
 
-User.hasMany(FriendshipStatus, {
-  foreignKey: "specifier_id",
-});
+// MyStatus.hasMany(FriendshipStatus, {
+//   foreignKey: "status_code",
+// });
+
+// User.hasMany(FriendshipStatus, {
+//   foreignKey: "specifier_id",
+// });
 
 /* End===============================
 =================================================================================*/
 
-module.exports = { User, Post, Friendship, FriendshipStatus, MyStatus };
+module.exports = { User, Post, Friendship };

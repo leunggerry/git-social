@@ -5,12 +5,12 @@ class FriendshipStatus extends Model {}
 
 FriendshipStatus.init(
   {
-    RequesterIdStatus: {
+    RequesterStatusId: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       allowNull: false,
     },
-    AddresseeIdStatus: {
+    AddresseeStatusId: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       allowNull: false,
@@ -27,6 +27,30 @@ FriendshipStatus.init(
     SpecifierId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+    },
+    requesterId: {
+      // TODO: this should be a FK in Friendship table
+      // TODO: ON DELETE & UPDATE automatically set to RESTRICT.
+      //       - Explore how to up these to CASCADE and SET NULL
+      type: DataTypes.INTEGER,
+      required: true,
+      allowNull: false,
+      references: {
+        model: "friendship",
+        key: "requester_id",
+      },
+    },
+    addresseeId: {
+      // TODO: this should be a FK in Friendship table
+      // TODO: ON DELETE & UPDATE automatically set to RESTRICT.
+      //       - Explore how to up these to CASCADE and SET NULL
+      type: DataTypes.INTEGER,
+      required: true,
+      allowNull: false,
+      references: {
+        model: "friendship",
+        key: "addressee_id",
+      },
     },
     // requesterId: {
     //   type: DataTypes.INTEGER,
