@@ -1,7 +1,7 @@
 const User = require("./User");
 const Post = require("./Post");
-// const Comment = require("./Comment");
 const Friendship = require("./Friendship");
+const FriendshipStatus = require("./FriendshipStatus");
 const MyStatus = require("./MyStatus");
 
 /* User, Post relationships 
@@ -21,23 +21,18 @@ User.belongsToMany(Post, {
 Post.belongsToMany(User, {
   through: "ThroughTable",
 }); // through table
-/* End===============================*/
+/* End===============================
+=================================================================================*/
 
 /* User, Friendship relationships 
 start=================================================================================*/
 User.hasMany(Friendship, {
+  // as: "friend_requests",
   foreignKey: "requester_id",
 });
 User.hasMany(Friendship, {
   foreignKey: "addressee_id",
 });
-// User.hasMany(Friendship, {
-//   foreignKey: "user_id",
-// });
-
-// Friendship.belongsTo(User, {
-//   foreignKey: "user_id",
-// });
 
 // User.belongsToMany(Friendship, {
 //   through: "ThroughTable",
@@ -47,22 +42,27 @@ User.hasMany(Friendship, {
 //   through: "ThroughTable",
 // }); // through table
 
-/* End===============================*/
+/* End===============================
+=================================================================================*/
 
-// Comment.belongsTo(User, {
-//   foreignKey: "user_id",
+/* User, Friendship, FriendshipStatus relationships 
+start=================================================================================*/
+// Friendship.hasMany(FriendshipStatus, {
+//   foreignKey: "requester_id_status",
+// });
+// Friendship.hasMany(FriendshipStatus, {
+//   foreignKey: "addressee_id",
 // });
 
-// Comment.belongsTo(Post, {
-//   foreignKey: "post_id",
-// });
+MyStatus.hasMany(FriendshipStatus, {
+  foreignKey: "status_code",
+});
 
-// User.hasMany(Comment, {
-//   foreignKey: "user_id",
-// });
+User.hasMany(FriendshipStatus, {
+  foreignKey: "specifier_id",
+});
 
-// Post.hasMany(Comment, {
-//   foreignKey: "post_id",
-// });
+/* End===============================
+=================================================================================*/
 
-module.exports = { User, Post, Friendship };
+module.exports = { User, Post, Friendship, FriendshipStatus, MyStatus };

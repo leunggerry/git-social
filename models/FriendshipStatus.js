@@ -1,78 +1,54 @@
-// const { Model, DataTypes } = require("sequelize");
-// const sequelize = require("../config/connection");
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
-// class FriendshipStatus extends Model {}
+class FriendshipStatus extends Model {}
 
-// FriendshipStatus.init(
-//   {
-//     requester_id: {
-//       type: DataTypes.INTEGER,
-//       primaryKey: true,
-//       allowNull: false,
-//     },
-//     addressee_id: {
-//       type: DataTypes.INTEGER,
-//       primaryKey: true,
-//       allowNull: false,
-//     },
-//     specified_date_time: {
-//       type: DataTypes.DATE,
-//       primaryKey: true,
-//       allowNull: false,
-//     },
-//     status_code: {
-//       type: DataTypes.STRING(1),
-//       allowNull: false,
-//       references: {
-//         model: "my_status",
-//         key: "status_code",
-//       },
-//     },
-//     specifier_id: {
-//       type: DataTypes.INTEGER,
-//       allowNull: false,
-//       references: {
-//         model: "user",
-//         key: "id",
-//       },
-//     },
-//     requesterId: {
-//       type: DataTypes.INTEGER,
-//       references: {
-//         model: "friendship",
-//         key: "requester_id",
-//         requesterId: {
-//           type: DataTypes.INTEGER,
-//           allowNull: false,
-//           references: {
-//             model: "user",
-//             key: "id",
-//           },
-//         },
-//         addresseeId: {
-//           type: DataTypes.INTEGER,
-//           allowNull: false,
-//           references: {
-//             model: "user",
-//             key: "id",
-//           },
-//         },
-//       },
-//     },
-//     // addresseeId: {
-//     //   type: DataTypes.INTEGER,
-//     //   references: {
-//     //     model: "friendship",
-//     //     key: "addressee_id",
-//     //   },
-//     // },
-//   },
-//   {
-//     sequelize,
-//     freezeTableName: true,
-//     underscored: true,
-//     modelName: "friendshipStatus",
-//   }
-// );
+FriendshipStatus.init(
+  {
+    RequesterIdStatus: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      allowNull: false,
+    },
+    AddresseeIdStatus: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      allowNull: false,
+    },
+    SpecifiedDateTime: {
+      type: DataTypes.DATE,
+      primaryKey: true,
+      allowNull: false,
+    },
+    status_code: {
+      type: DataTypes.STRING(1),
+      allowNull: false,
+    },
+    SpecifierId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    // requesterId: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: "friendship",
+    //     key: "requester_id",
+    //   },
+    // },
+    // addresseeId: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: "friendship",
+    //     key: "addressee_id",
+    //   },
+    // },
+  },
+  {
+    sequelize,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "friendshipStatus",
+  }
+);
 
-// module.exports = FriendshipStatus;
+module.exports = FriendshipStatus;
