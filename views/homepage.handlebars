@@ -1,11 +1,24 @@
-{{!-- file struct must be  setup like this --}}
+{{! file structure must be  setup like this }}
 <ol class="post-list">
-    {{#each posts as |post|}}
-  <li>
-    {{!-- to use partial
-     1 - use the name of the partial file
-     2 - object that is passed in --}}
-    {{> post-info post}}
-  </li>
+  {{#each posts}}
+    {{! loop over any HTML code the each statements }}
+    <li>
+      <article class="post">
+        <div class="title">
+          <h3>{{title}}</h3>
+          <p>{{text_body}}</p>
+          <a href="{{github_repo_url}}" target="_blank">{{title}}
+            - Github repo</a>
+        </div>
+        <div class="meta">
+          Posted by
+          {{user.username}}
+          on
+          {{created_at}}
+          |
+          <a href="/post/{{id}}"></a>
+        </div>
+      </article>
+    </li>
   {{/each}}
 </ol>
