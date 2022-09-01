@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Post, UsersFriends } = require("../../models");
+const { User, Post, Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 router.get("/", (req, res) => {
@@ -53,13 +53,16 @@ router.get("/:id", (req, res) => {
     });
 });
 
+// Create a new user
 router.post("/", (req, res) => {
-  // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
+  // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234', github_username: "leunggerry"}
   User.create({
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
+    github_username: req.body.github_username,
   }).then((dbUserData) => {
+    // @TODO For express session
     req.session.save(() => {
       req.session.user_id = dbUserData.id;
       req.session.username = dbUserData.username;
@@ -71,14 +74,14 @@ router.post("/", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  // expects {email: 'lernantino@gmail.com', password: 'password1234'}
+  // expects {username: 'Lernantino',password: 'password1234',}
   User.findOne({
     where: {
       email: req.body.email,
     },
   }).then((dbUserData) => {
     if (!dbUserData) {
-      res.status(400).json({ message: "No user with that email address!" });
+      res.status(400).json({ message: "No user with that username!" });
       return;
     }
 
@@ -101,7 +104,9 @@ router.post("/login", (req, res) => {
   });
 });
 
-router.post("/logout", withAuth, (req, res) => {
+// logout action
+router.post("/logout", (req, res) => {
+  // router.post("/logout", withAuth, (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
@@ -111,8 +116,10 @@ router.post("/logout", withAuth, (req, res) => {
   }
 });
 
-router.put("/:id", withAuth, (req, res) => {
-  // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
+// Update a user
+router.put("/:id", (req, res) => {
+  // router.put("/:id", withAuth, (req, res) => {
+  // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234', github_username: "leunggerry"}
   User.update(req.body, {
     individualHooks: true,
     where: {
@@ -132,7 +139,10 @@ router.put("/:id", withAuth, (req, res) => {
     });
 });
 
-router.delete("/:id", withAuth, (req, res) => {
+// Delete a User from the User Table
+// For express authentication
+//router.delete("/:id", withAuth, (req, res) => {
+router.delete("/:id", (req, res) => {
   User.destroy({
     where: {
       id: req.params.id,
