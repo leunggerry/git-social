@@ -1,9 +1,10 @@
 const User = require("./User");
 const Post = require("./Post");
+const Comment = require("./Comment");
 const Friendship = require("./Friendship");
 const UsersFriends = require("./UsersFriends");
 
-/* User, Post relationships 
+/* User, Post Comment relationships 
 START=================================================================================*/
 User.hasMany(Post, {
   foreignKey: "user_id",
@@ -21,6 +22,24 @@ Post.belongsToMany(User, {
   through: "ThroughTable", // through table
 }); // many-to-many relationship
 
+Comment.belongsTo(User, {
+  foreignKey: "user_id",
+  onDelete: "SET NULL",
+});
+
+Comment.belongsTo(Post, {
+  foreignKey: "post_id",
+  onDelete: "SET NULL",
+});
+
+User.hasMany(Comment, {
+  foreignKey: "user_id",
+  onDelete: "SET NULL",
+});
+
+Post.hasMany(Comment, {
+  foreignKey: "post_id",
+});
 /* END===============================
 =================================================================================*/
 
@@ -55,4 +74,4 @@ UsersFriends.belongsTo(User); // one-to-one relationship
 /* END===============================
 =================================================================================*/
 
-module.exports = { User, Post, Friendship, UsersFriends };
+module.exports = { User, Post, Comment, Friendship, UsersFriends };
