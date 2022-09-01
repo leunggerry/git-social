@@ -1,31 +1,31 @@
 const User = require("./User");
 const Post = require("./Post");
 const Friendship = require("./Friendship");
-// const FriendshipStatus = require("./FriendshipStatus");
-// const MyStatus = require("./MyStatus");
+const UsersFriends = require("./UsersFriends");
 
 /* User, Post relationships 
-start=================================================================================*/
+START=================================================================================*/
 User.hasMany(Post, {
   foreignKey: "user_id",
-});
+}); // one-to-many relationship
 
 Post.belongsTo(User, {
   foreignKey: "user_id",
-});
+}); // one-to-one relationship
 
 User.belongsToMany(Post, {
-  through: "ThroughTable",
-}); // through table
+  through: "ThroughTable", // through table
+}); // many-to-many relationship
 
 Post.belongsToMany(User, {
-  through: "ThroughTable",
-}); // through table
-/* End===============================
+  through: "ThroughTable", // through table
+}); // many-to-many relationship
+
+/* END===============================
 =================================================================================*/
 
-/* User, Friendship relationships 
-start=================================================================================*/
+/* User, UsersFriends relationships 
+START=================================================================================*/
 User.hasMany(Friendship, {
   // as: "friend_requests",
   foreignKey: "requester_id",
@@ -38,40 +38,21 @@ Friendship.belongsTo(User, {
   foreignKey: "user_id",
 });
 
-// User.belongsToMany(Friendship, {
-//   through: "ThroughTable",
-// }); // through table
+User.belongsToMany(User, {
+  as: "friends",
+  foreignKey: "user_id",
+  through: "UsersFriends", // through table
+}); // many-to-many relationship
 
-// Friendship.belongsToMany(User, {
-//   through: "ThroughTable",
-// }); // through table
+User.belongsToMany(User, {
+  as: "userFriends",
+  foreignKey: "friend_id",
+  through: "UsersFriends", // through table
+}); // many-to-many relationship
 
-/* End===============================
+UsersFriends.belongsTo(User); // one-to-one relationship
+
+/* END===============================
 =================================================================================*/
 
-/* User, Friendship, FriendshipStatus, MyStatus relationships 
-start=================================================================================*/
-// Friendship.hasMany(FriendshipStatus);
-// Friendship.hasMany(FriendshipStatus, {
-//   foreignKey: "addressee_id",
-// });
-
-// FriendshipStatus.belongsTo(Friendship, {
-//   foreignKey: "requester_id",
-// });
-// FriendshipStatus.belongsTo(Friendship, {
-//   foreignKey: "addressee_id",
-// });
-
-// MyStatus.hasMany(FriendshipStatus, {
-//   foreignKey: "status_code",
-// });
-
-// User.hasMany(FriendshipStatus, {
-//   foreignKey: "specifier_id",
-// });
-
-/* End===============================
-=================================================================================*/
-
-module.exports = { User, Post, Friendship };
+module.exports = { User, Post, Friendship, UsersFriends };

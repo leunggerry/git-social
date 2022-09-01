@@ -1,5 +1,6 @@
 const seedUsers = require("./user-seeds");
 const seedPosts = require("./post-seeds");
+const seedFriends = require("./friend-seeds");
 const seedFriendships = require("./friendship-seeds");
 
 const sequelize = require("../config/connection");
@@ -14,6 +15,9 @@ const seedAll = async () => {
   console.log("--------------");
 
   await seedFriendships();
+  console.log("--------------");
+
+  await seedFriends();
   console.log("--------------");
 
   process.exit(0);

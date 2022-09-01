@@ -1,24 +1,19 @@
 const router = require("express").Router();
-const {
-  User,
-  Friendship,
-  FriendshipStatus,
-  MyStatus,
-} = require("../../models");
-const withAuth = require("../../utils/auth");
+const { User, Friendship } = require("../../models");
+// const withAuth = require("../../utils/auth");
 
 router.get("/", (req, res) => {
+  // get a list of all friend requests
   Friendship.findAll({
     attributes: [
       "requester_id",
       "addressee_id",
       "status_code",
       "requested_date_time",
-      "user_id",
     ],
     include: [
       {
-        model: User,
+        model: User, //include the requester's username requester_username
         attributes: [["username", "requester_username"]],
       },
     ],
@@ -31,6 +26,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
+  // find one friend request by the requester's id
   Friendship.findOne({
     where: {
       requesterId: req.params.id,
@@ -40,11 +36,10 @@ router.get("/:id", (req, res) => {
       "addressee_id",
       "status_code",
       "requested_date_time",
-      "user_id",
     ],
     include: [
       {
-        model: User,
+        model: User, //include the requester's username requester_username
         attributes: [["username", "requester_username"]],
       },
     ],
@@ -65,11 +60,11 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  // expects {requesterId: 1, addresseeId: 2, user_id: 1}
+  // expects {requesterId: 1, addresseeId: 2}
   Friendship.create({
     requesterId: req.body.requesterId,
     addresseeId: req.body.addresseeId,
-    user_id: req.body.user_id,
+    user_id: req.body.requesterId, // lock the user Id to requesterId
   })
     .then((dbFriendshipData) => res.json(dbFriendshipData))
     .catch((err) => {
@@ -79,7 +74,9 @@ router.post("/", (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
-  // expects {statusCode: R|| statusCode: A|| statusCode: D|| statusCode: B}
+  // you can update the status of a friend request
+  // R= Requested, A= Accepted, D= Declined, B= Blocked
+  // expects {statusCode: "R"|| statusCode: "A"|| statusCode: "D"|| statusCode: "B"}
   Friendship.update(
     {
       statusCode: req.body.statusCode,
@@ -92,7 +89,9 @@ router.put("/:id", (req, res) => {
   )
     .then((dbFriendshipData) => {
       if (!dbFriendshipData) {
-        res.status(404).json({ message: "No post found with this id" });
+        res
+          .status(404)
+          .json({ message: "No friend request found with this id" });
         return;
       }
       res.json(dbFriendshipData);
