@@ -77,11 +77,11 @@ router.post("/login", (req, res) => {
   // expects {username: 'Lernantino',password: 'password1234',}
   User.findOne({
     where: {
-      email: req.body.email,
+      email: req.body.username,
     },
   }).then((dbUserData) => {
     if (!dbUserData) {
-      res.status(400).json({ message: "No user with that email address!" });
+      res.status(400).json({ message: "No user with that username!" });
       return;
     }
 
@@ -106,7 +106,7 @@ router.post("/login", (req, res) => {
 
 // logout action
 router.post("/logout", (req, res) => {
-  // router.post("/logout", withAuth, (req, res) => {
+// router.post("/logout", withAuth, (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();

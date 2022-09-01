@@ -97,6 +97,7 @@ const postdata = [
     user_id: 3,
   },
   {
+
     title: "Vestibulum ante ipsum.",
     text_body:
       "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam.",

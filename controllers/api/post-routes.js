@@ -3,7 +3,7 @@ const sequelize = require("../../config/connection");
 const { Post, User } = require("../../models");
 const withAuth = require("../../utils/auth");
 
-// get all users
+// get all Posts
 router.get("/", (req, res) => {
   console.log("======================");
   Post.findAll({
@@ -64,13 +64,18 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.post("/", withAuth, (req, res) => {
+// Create a Post 
+// @TODO took out utilities of user authenitcation session
+router.post("/", (req, res) => {
+// router.post("/", withAuth, (req, res) => {
   // expects {title: 'Taskmaster', text_body: "Donec", github_repo_url: 'https://taskmaster.com/press', user_id: 1}
   Post.create({
     title: req.body.title,
     text_body: req.body.text_body,
     github_repo_url: req.body.github_repo_url,
-    user_id: req.session.user_id,
+    user_id: req.body.user_id,
+    // take out session for now
+    //user_id: req.session.user_id,
   })
     .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {
@@ -79,10 +84,16 @@ router.post("/", withAuth, (req, res) => {
     });
 });
 
-router.put("/:id", withAuth, (req, res) => {
+// Update a post
+// @Todo took out user authentication
+router.put("/:id", (req, res) => {
+// router.put("/:id", withAuth, (req, res) => {
   Post.update(
     {
       title: req.body.title,
+      text_body: req.body.text_body,
+      github_repo_url: req.body.github_repo_url,
+      user_id: req.body.user_id, //used by last updated
     },
     {
       where: {
@@ -103,7 +114,10 @@ router.put("/:id", withAuth, (req, res) => {
     });
 });
 
-router.delete("/:id", withAuth, (req, res) => {
+// Delete a post
+// @TODO took out user authentication
+router.delete("/:id", (req, res) => {
+// router.delete("/:id", withAuth, (req, res) => {
   console.log("id", req.params.id);
   Post.destroy({
     where: {
