@@ -35,7 +35,7 @@ const postdata = [
     user_id: 7,
   },
   {
-    title: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+    title: "Lorem ipsum dolor sit amet.",
     text_body: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
     github_repo_url: "https://stanford.edu/consequat.png",
     user_id: 4,
@@ -47,7 +47,7 @@ const postdata = [
     user_id: 1,
   },
   {
-    title: "Morbi non quam nec dui luctus rutrum.",
+    title: "Morbi non quam nec.",
     text_body: "Morbi non quam nec dui luctus rutrum.",
     github_repo_url: "http://ucla.edu/consequat/nulla.html",
     user_id: 1,
@@ -59,7 +59,7 @@ const postdata = [
     user_id: 9,
   },
   {
-    title: "Curabitur at ipsum ac tellus semper interdum.",
+    title: "Curabitur at ipsum.",
     text_body: "Curabitur at ipsum ac tellus semper interdum.",
     github_repo_url: "https://reverbnation.com/ligula/sit.jpg",
     user_id: 5,
@@ -71,7 +71,7 @@ const postdata = [
     user_id: 3,
   },
   {
-    title: "Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo.",
+    title: "Morbi odio odio.",
     text_body: "Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo.",
     github_repo_url:
       "http://networksolutions.com/nam/ultrices/libero/non/mattis/pulvinar.json",
@@ -91,15 +91,14 @@ const postdata = [
     user_id: 3,
   },
   {
-    title:
-      "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo.",
+    title: "Cras mi pede, malesuada in.",
     text_body: "mi pede, malesuada in, imperdiet et, commodo vulputate, justo.",
     github_repo_url: "https://gmpg.org/lorem.jpg",
     user_id: 3,
   },
   {
-    title:
-      "Vestibulum ante ipsum primis in faucibus ",
+
+    title: "Vestibulum ante ipsum.",
     text_body:
       "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam.",
     github_repo_url: "https://paginegialle.it/mattis/egestas.jsp",
@@ -118,15 +117,14 @@ const postdata = [
     user_id: 4,
   },
   {
-    title: "Nulla ut erat id mauris vulputate elementum.",
+    title: "Nulla ut erat id mauris.",
     text_body: "Nulla ut erat id mauris vulputate elementum.",
     github_repo_url:
       "http://java.com/diam/neque/vestibulum/eget/vulputate/ut/ultrices.png",
     user_id: 6,
   },
   {
-    title:
-      "Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
+    title: "Integer pede justo.",
     text_body:
       "eger pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
     github_repo_url: "https://java.com/at/nibh/in.png",

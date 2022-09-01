@@ -5,16 +5,33 @@ class Friendship extends Model {}
 
 Friendship.init(
   {
-    requester_id: {
+    requesterId: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       allowNull: false,
     },
-    addressee_id: {
+    addresseeId: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       allowNull: false,
     },
+    statusCode: {
+      type: DataTypes.STRING(1),
+      allowNull: false,
+      defaultValue: "R",
+    },
+    requestedDateTime: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
+    // user_id: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: "user",
+    //     key: "id",
+    //   },
+    // },
     // requesterId: {
     //   type: DataTypes.INTEGER,
     //   references: {
