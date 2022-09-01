@@ -99,7 +99,7 @@ const postdata = [
   },
   {
     title:
-      "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam.",
+      "Vestibulum ante ipsum primis in faucibus ",
     text_body:
       "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam.",
     github_repo_url: "https://paginegialle.it/mattis/egestas.jsp",
