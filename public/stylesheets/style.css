@@ -1,6 +1,23 @@
 :root {
   /* CSS HEX */
   --liver-organ: #752f22ff;
+
+  --white: #ffffff;
+  --black: #000000;
+
+  --steel-teal: #729095;
+  --middle-grey: #7f786f;
+  --dark-junk-green: #23251f;
+  --black-olive: #3a362d;
+  --black-chocolate: #21211b;
+  --cadet: #516770;
+
+  --primary-background-color: var(--black-olive);
+  --secondary-background-color: var(--steel-teal);
+  --teritary-background-colr: var(--cadet);
+
+  --primary-font-color: var(--white);
+  --secondary-font-color: var(--black);
 }
 
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Poppins:400,500&display=swap");
@@ -41,6 +58,9 @@
   background: rgba(255, 255, 255, 0.133);
 }
 
+h1 {
+  color: white;
+}
 .content header {
   color: white;
   font-size: 33px;
