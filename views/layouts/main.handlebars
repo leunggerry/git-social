@@ -11,6 +11,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
+
+
   </head>
   <body>
     <div class="wrapper">
@@ -19,9 +21,14 @@
           <a href="/">Git Social</a>
         </h1>
         <nav>
-          <button id="logout" class="btn-no-style">Logout</button>
-          <a href="/login">Login</a>
+
+          {{#if loggedIn}}
+            <button id="logout" class="btn-no-style">Logout</button>
+          {{else}}
+            <a href="/login">Login</a>
+          {{/if}}
         </nav>
+
       </header>
       <main>
         {{{body}}}
@@ -31,7 +38,10 @@
       </footer>
     </div>
 
-    <script src="/javascript/logout.js"></script>
+    {{#if loggedIn}}
+      <script src="/javascript/logout.js"></script>
+    {{/if}}
+
   </body>
 
 </html>
