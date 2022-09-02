@@ -4,7 +4,6 @@ const { Post, User } = require("../models");
 
 // get all posts for homepage
 router.get("/", (req, res) => {
-  console.log(req.session);
   Post.findAll({
     attributes: ["id", "title", "text_body", "created_at"],
     include: [
@@ -24,6 +23,7 @@ router.get("/", (req, res) => {
       res.status(500).json(err);
     });
 });
+
 
 // go to login page
 router.get("/login", (req, res) => {
