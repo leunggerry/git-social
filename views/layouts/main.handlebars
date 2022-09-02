@@ -11,6 +11,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
+    {{!-- Materialize CSS --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 
   </head>
@@ -23,16 +25,18 @@
         <nav>
 
           {{#if loggedIn}}
-            <button id="logout" class="btn-no-style">Logout</button>
+            <button id="logout" class="waves-effect waves-teal btn-flat">Logout</button>
           {{else}}
-            <a href="/login">Login</a>
+            <button id="login-btn" class="waves-effect waves-teal btn-flat">Login</button>
           {{/if}}
         </nav>
 
       </header>
-      <main>
-        {{{body}}}
-      </main>
+      <div class="container">
+        <main>
+          {{{body}}}
+        </main>
+      </div>
       <footer>
         Thanks for visiting!
       </footer>
@@ -40,8 +44,10 @@
 
     {{#if loggedIn}}
       <script src="/javascript/logout.js"></script>
+    {{else}}
+      <script src="/javascript/home.js"></script>
     {{/if}}
 
   </body>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </html>
