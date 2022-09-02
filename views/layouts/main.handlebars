@@ -6,15 +6,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Git Social</title>
-    {{! <link rel="stylesheet" href="/stylesheets/style.css" /> }}
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
   </head>
-
   <body>
     <div class="wrapper">
       <header>
         <h1>
           <a href="/">Git Social</a>
         </h1>
+        <nav>
+          <button id="logout" class="btn-no-style">Logout</button>
+          <a href="/login">Login</a>
+        </nav>
       </header>
       <main>
         {{{body}}}
@@ -24,6 +31,7 @@
       </footer>
     </div>
 
+    <script src="/javascript/logout.js"></script>
   </body>
 
 </html>
