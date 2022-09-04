@@ -32,6 +32,31 @@
         class="Header-old header-logged-out js-details-container Details position-relative f4 py-2"
         role="banner"
       >
+        <!-- github nav -->
+        <div class="container-xl d-lg-flex flex-items-center p-responsive">
+          <div class="d-flex flex-justify-between flex-items-center">
+            Git Social
+          </div>
+          <div
+            class="HeaderMenu HeaderMenu--logged-out position-fixed top-0 right-0 bottom-0 height-fit position-lg-relative d-lg-flex flex-justify-between flex-items-center flex-auto"
+          >
+            <nav-GS class="mt-0 px-3 px-lg-0 mb-5 mb-lg-0" aria-label="Global">
+              <ul-GS class="d-lg-flex list-style-none">
+                <li
+                  class="mr-0 mr-lg-3 position-relative flex-wrap flex-justify-between flex-items-center border-bottom border-lg-bottom-0 d-block d-lg-flex flex-lg-nowrap flex-lg-items-center"
+                ></li>
+              </ul-GS>
+            </nav-GS>
+            <div
+              class="d-lg-flex flex-items-center px-3 px-lg-0 text-center text-lg-left"
+            >
+              <div class="position-relative mr-3 mb-4 mb-lg-0 d-inline-block">
+                <a href="#">Sign in</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Materialize nav -->
         <nav role="navigation">
           <div class="container-xl d-lg-flex flex-items-center p-responsive">
             <div class="nav-wrapper container">
@@ -79,11 +104,19 @@
     </div>
     <main>
       <div class="overflow-hidden">
-        <div class="home-hero-container position-relative js-webgl-globe-data">
-          <video autoplay loop muted plays-inline class="gitting-social">
-            <source src="../../render0001-0200.mp4" type="video/mp4" />
-          </video>
-          <div class="home-hero">
+        <div class="home-hero-container position-relative">
+          <div class="animation-container">
+            <div class="animation">
+              <video autoplay loop muted plays-inline class="gitting-social">
+                <!-- <video class="gitting-social"> -->
+                <source src="./render0001-0200.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+
+          <div
+            class="home-hero position-absolute z-1 top-0 right-0 bottom-0 left-0 overflow-hidden"
+          >
             <div id="index-banner">
               <div
                 class="d-flex flex-column flex-justify-between mx-auto container-xl p-responsive height-full pb-md-9"
