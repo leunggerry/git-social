@@ -32,8 +32,6 @@ async function signupFormHandler(event) {
         github_username,
       }),
       headers: { "Content-Type": "application/json" },
-    }).then((response) => {
-      console.log(response);
     });
 
     // check the response status
