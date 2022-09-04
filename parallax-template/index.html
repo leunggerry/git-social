@@ -27,7 +27,7 @@
     class="logged-out env-production page-responsive header-overlay tab-size-and-alignment-fix"
     style="word-wrap: break-word"
   >
-    <div class="position-relative js-header-wrapper">
+    <div class="position-relative nav-wrapper">
       <header
         class="Header-old header-logged-out js-details-container Details position-relative f4 py-2"
         role="banner"
@@ -35,13 +35,14 @@
         <!-- github nav -->
         <div class="container-xl d-lg-flex flex-items-center p-responsive">
           <div class="d-flex flex-justify-between flex-items-center">
-            Git Social
+            <a href="#!" class="brand-logo">Git Social</a>
+            <!-- Git Social -->
           </div>
           <div
             class="HeaderMenu HeaderMenu--logged-out position-fixed top-0 right-0 bottom-0 height-fit position-lg-relative d-lg-flex flex-justify-between flex-items-center flex-auto"
           >
             <nav-GS class="mt-0 px-3 px-lg-0 mb-5 mb-lg-0" aria-label="Global">
-              <ul-GS class="d-lg-flex list-style-none">
+              <ul-GS class="d-lg-flex list-style-none hide-on-med-and-down">
                 <li
                   class="mr-0 mr-lg-3 position-relative flex-wrap flex-justify-between flex-items-center border-bottom border-lg-bottom-0 d-block d-lg-flex flex-lg-nowrap flex-lg-items-center"
                 ></li>
@@ -50,61 +51,29 @@
             <div
               class="d-lg-flex flex-items-center px-3 px-lg-0 text-center text-lg-left"
             >
-              <div class="position-relative mr-3 mb-4 mb-lg-0 d-inline-block">
+              <div class="position-relative mr-3 mb-4 mb-lg-0 d-inline-block hide-on-med-and-down">
                 <a href="#">Sign in</a>
               </div>
+              <ul class="sidenav" id="mobile-demo">
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="badges.html">Components</a></li>
+              </ul>
             </div>
           </div>
-        </div>
-        <!-- Materialize nav -->
-        <nav role="navigation">
-          <div class="container-xl d-lg-flex flex-items-center p-responsive">
-            <div class="nav-wrapper container">
-              <a id="logo-container" href="#" class="brand-logo">Git Social</a>
-              <!-- Nav on larger screens -->
-              <ul class="right hide-on-med-and-down">
-                <li><a href="#">Sign in</a></li>
-              </ul>
-              <!-- <ul class="right hide-on-med-and-down">
-                <li><a href="#">Sign Up</a></li>
-              </ul> -->
-
-              <!-- Nav on mobile -->
-              <ul id="nav-mobile" class="sidenav">
-                <li><a href="#">Sign in</a></li>
-                <!-- <li><a href="#">Sign Up</a></li> -->
-              </ul>
-              <a href="#" data-target="nav-mobile" class="sidenav-trigger"
-                ><i class="material-icons">menu</i></a
-              >
-            </div>
-          </div>
-          <!-- Materialize
-      <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo">Git Social</a>
-        Nav on larger screens
-        <ul class="right hide-on-med-and-down">
-          <li><a href="#">Sign in</a></li>
-        </ul>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="#">Sign Up</a></li>
-        </ul>
-
-        Nav on mobile
+          <!-- Nav on mobile -->
         <ul id="nav-mobile" class="sidenav">
           <li><a href="#">Sign in</a></li>
           <li><a href="#">Sign Up</a></li>
         </ul>
-        <a href="#" data-target="nav-mobile" class="sidenav-trigger"
-          ><i class="material-icons">menu</i></a
-        >
-      </div> -->
-        </nav>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </div>
       </header>
     </div>
     <main class="font-mktg">
-      <div class="overflow-hidden">
+      <!-- Welcome Section -->
+      <section class="overflow-hidden">
         <div class="home-hero-container position-relative">
+          <!-- Hero Banner -->
           <div class="animation-container">
             <div class="animation">
               <video autoplay loop muted plays-inline class="gitting-social">
@@ -113,7 +82,7 @@
               </video>
             </div>
           </div>
-
+          <!-- Sign up -->
           <div
             class="home-hero position-absolute z-1 top-0 right-0 bottom-0 left-0 overflow-hidden"
           >
@@ -168,45 +137,13 @@
                   </form>
                 </div>
               </div>
-              <div class="section no-pad-bot">
-                <div class="container">
-                  <br /><br />
-                  <h1 class="header center teal-text text-lighten-2">
-                    Parallax Template
-                  </h1>
-                  <div class="row center">
-                    <h5 class="header col s12 light">
-                      A modern responsive front-end framework based on Material
-                      Design
-                    </h5>
-                  </div>
-                  <div class="row center">
-                    <a
-                      href="http://materializecss.com/getting-started.html"
-                      id="download-button"
-                      class="btn-large waves-effect waves-light teal lighten-1"
-                      >Get Started</a
-                    >
-                  </div>
-                  <br /><br />
-                </div>
-              </div>
-            </div>
-            <div id="index-banner">
-              <div class="parallax">
-                <!-- <img
-                  src="../../nubelson-fernandes--Xqckh_XVU4-unsplash.jpg"
-                  alt=""
-                /> -->
-              </div>
             </div>
           </div>
         </div>
-      </div>
-    </main>
-
-    <div class="container">
-      <div class="section">
+      </section>
+      <!-- Website Preview Section -->
+      <div class="container">
+        <div class="section">
         <!--   Icon Section   -->
         <div class="row">
           <div class="col s12 m4">
@@ -259,97 +196,76 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="parallax-container valign-wrapper">
-      <div class="section no-pad-bot">
-        <div class="container">
-          <div class="row center">
-            <h5 class="header col s12 light">
-              A modern responsive front-end framework based on Material Design
-            </h5>
-          </div>
-        </div>
-      </div>
-      <div class="parallax">
-        <img src="background2.jpg" alt="Unsplashed background img 2" />
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="section">
-        <div class="row">
-          <div class="col s12 center">
-            <h3><i class="mdi-content-send brown-text"></i></h3>
-            <h4>Contact Us</h4>
-            <p class="left-align light">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-              scelerisque id nunc nec volutpat. Etiam pellentesque tristique
-              arcu, non consequat magna fermentum ac. Cras ut ultricies eros.
-              Maecenas eros justo, ullamcorper a sapien id, viverra ultrices
-              eros. Morbi sem neque, posuere et pretium eget, bibendum
-              sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis
-              nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa
-              odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget
-              dignissim mauris, non tristique erat. Vestibulum ante ipsum primis
-              in faucibus orci luctus et ultrices posuere cubilia Curae;
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="parallax-container valign-wrapper">
-      <div class="section no-pad-bot">
-        <div class="container">
-          <div class="row center">
-            <h5 class="header col s12 light">
-              A modern responsive front-end framework based on Material Design
-            </h5>
-          </div>
-        </div>
-      </div>
-      <div class="parallax">
-        <img src="background3.jpg" alt="Unsplashed background img 3" />
-      </div>
-    </div>
-
+    </main>
+    <!-- Footer -->
     <footer class="page-footer teal">
       <div class="container">
         <div class="row">
           <div class="col l6 s12">
-            <h5 class="white-text">Company Bio</h5>
+            <h5 class="white-text">What We Do</h5>
             <p class="grey-text text-lighten-4">
-              We are a team of college students working on this project like
-              it's our full time job. Any amount would help support and continue
-              development on this project and is greatly appreciated.
+              Git Social is a platform for new developers to connect and collaborate on projects while building their portfolios.
             </p>
           </div>
-          <div class="col l3 s12">
-            <h5 class="white-text">Settings</h5>
-            <ul>
-              <li><a class="white-text" href="#!">Link 1</a></li>
-              <li><a class="white-text" href="#!">Link 2</a></li>
-              <li><a class="white-text" href="#!">Link 3</a></li>
-              <li><a class="white-text" href="#!">Link 4</a></li>
-            </ul>
-          </div>
-          <div class="col l3 s12">
-            <h5 class="white-text">Connect</h5>
-            <ul>
-              <li><a class="white-text" href="#!">Link 1</a></li>
-              <li><a class="white-text" href="#!">Link 2</a></li>
-              <li><a class="white-text" href="#!">Link 3</a></li>
-              <li><a class="white-text" href="#!">Link 4</a></li>
-            </ul>
+          <div class="col l6 s12">
+            <h5 class="white-text">Developers</h5>
+            <div class="socials">
+              <ul>
+                <li>
+                  <a class="white-text" href="https://github.com/joesen-dev" class="social">
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                      fill="#ffffff" 
+                      width="50" 
+                      height="50" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                      />
+                    </svg>
+                    Joseph             
+                  </a>
+                </li>
+                <li>
+                  <a class="white-text" href="https://github.com/leunggerry" class="social">
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                      fill="#ffffff" 
+                      width="50" 
+                      height="50" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                      />
+                    </svg>
+                    Gerry             
+                  </a>
+                </li>
+                <li>
+                  <a class="white-text" href="https://github.com/khalidbhaarat" class="social">
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                      fill="#ffffff" 
+                      width="50" 
+                      height="50" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                      />
+                    </svg>
+                    Gerry             
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
       <div class="footer-copyright">
         <div class="container">
           Made by
-          <a class="brown-text text-lighten-3" href="http://materializecss.com"
-            >Materialize</a
+          <a class="brown-text text-lighten-3" href="https://github.com/leunggerry/git-social/tree/main"
+            >Mohammad, Gerry & Joseph</a
           >
         </div>
       </div>
