@@ -7,7 +7,6 @@
   --middle-grey: #7f786fff;
   --indigo-dye: #124568ff;
   --black-chocolate: #21221bff;
-  --liver-organ: #752f22ff;
   --color-canvas-default: #ffffff;
 
   /* Github body background color */
@@ -24,16 +23,12 @@
   user-select: none;
 }
 
-/*
- * WELCOME  PAGE STYLES ===START=== 
- */
-
 /* Github Style */
 body {
   /* font-family:  */
   font-size: 14px;
   line-height: 1.5;
-  color: var(--eerie-black);
+  /* color: var(--eerie-black); */
   background-color: var(--color-canvas-default);
 }
 
@@ -55,13 +50,13 @@ nav {
   box-shadow: none;
 }
 
-nav .brand-logo {
+/* nav .brand-logo {
   color: var(--eerie-black);
-}
+} */
 
-nav a {
+/* nav a {
   color: var(--eerie-black);
-}
+} */
 
 ul,
 ol {
@@ -114,7 +109,19 @@ p {
 .page-footer {
   background-color: var(--eerie-black);
 }
+.logout-button {
+  background-color: var(--liver-organ);
+}
+.card {
+  background-color: var(--middle-grey);
+}
 
+/* .home-img {
+  background: url("../images/nubelson-fernandes--Xqckh_XVU4-unsplash.jpg");
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+} */
 /* Materialize Styling  */
 /* ===================================== */
 /* nav ul a,
@@ -127,6 +134,9 @@ nav .brand-logo {
 } */
 /* ===================================== */
 
+/*
+ * WELCOME  PAGE STYLES ===START=== 
+ */
 /* Github Style */
 /* TEXT */
 .text-center {
@@ -135,9 +145,6 @@ nav .brand-logo {
 .text-gray-light-mktg {
   color: #8193b2 !important;
 }
-/* .color-text-white {
-  color: white !important;
-} */
 .text-normal {
   font-weight: 400 !important;
 }
@@ -210,9 +217,6 @@ nav .brand-logo {
   word-wrap: normal;
   border: 0;
 }
-/* input[type="email"]:not(.browser-default) {
-  background-color: white;
-} */
 
 /* SIGN UP BUTTON */
 .form-control,
@@ -328,10 +332,10 @@ nav .brand-logo {
 
 .header-overlay .header-logged-out,
 .header-overlay .Header {
-  position: absolute !important;
+  /* position: absolute !important; */
   right: 0;
   left: 0;
-  background-color: transparent;
+  /* background-color: transparent; */
 }
 
 .Header-old {
