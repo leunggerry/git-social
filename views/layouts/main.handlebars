@@ -2,11 +2,10 @@
     all other template files go to views folder (views/) }}
 <html lang="en">
   <head>
-    <meta content="charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Git Social</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Parallax Template - Materialize</title>
     <!-- CSS  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -42,7 +41,13 @@
                 class="HeaderMenu HeaderMenu--logged-out position-fixed top-0 right-0 bottom-0 height-fit position-lg-relative d-lg-flex flex-justify-between flex-items-center flex-auto"
               >
                 <!-- List items on dashboard -->
+                <!-- Keep spacing on nav-->
                 <nav class="mt-0 px-3 px-lg-0 mb-5 mb-lg-0" aria-label="Global">
+                  {{! <ul class="d-lg-flex list-style-none hide-on-med-and-down">
+                    <li
+                      class="mr-0 mr-lg-3 position-relative flex-wrap flex-justify-between flex-items-center border-bottom border-lg-bottom-0 d-block d-lg-flex flex-lg-nowrap flex-lg-items-center"
+                    ></li>
+                  </ul> }}
                 </nav>
                 <div
                   class="d-lg-flex flex-items-center px-3 px-lg-0 text-center text-lg-left"
@@ -51,7 +56,9 @@
                     <div
                       class="position-relative mr-3 mb-4 mb-lg-0 d-inline-block hide-on-med-and-down"
                     >
-                      <ul>
+                      <ul
+                        class="d-lg-flex list-style-none hide-on-med-and-down"
+                      >
                         {{! <li class="nav-item border-main-color">
                           <a class="nav-link" href="#">
                             <svg
@@ -114,7 +121,6 @@
                           </a> }}
                           <a href="#">Dashboard</a>
                         </li>
-                        {{! Friends List }}
                         <li class="nav-item">
                           {{! <a class="nav-link" href="#">
                             <svg
@@ -128,7 +134,6 @@
                           </a> }}
                           <a href="#">Posts</a>
                         </li>
-                        {{! Notifications }}
                         <li class="nav-item">
                           {{! <a class="nav-link" href="#">
                             <svg
@@ -142,19 +147,8 @@
                           </a> }}
                           <a href="#">Friends</a>
                         </li>
-                        <li class="nav-item">
-                          {{! <a class="nav-link" href="#">
-                            <svg
-                              class="text-muted"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 24 24"
-                              fill="currentColor"
-                            ><path d="M0 0h24v24H0V0z" fill="none"></path><path
-                                d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"
-                              ></path></svg>
-                          </a> }}
-                          <button id="logout">Logout</button>
-                        </li>
+                        {{! <a href="#">Logout</a> }}
+                        <button id="logout">Logout</button>
                       </ul>
                     </div>
                   {{else}}
@@ -344,8 +338,6 @@
     {{#if loggedIn}}
       <script src="/javascript/logout.js"></script>
     {{/if}}
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="javascript/materializeJS/materialize.js"></script>
     <script src="javascript/materializeJS/init.js"></script>
