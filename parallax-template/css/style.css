@@ -8,12 +8,15 @@
 
 :root {
   /* CSS HEX */
+  /* Git Social color scheme */
   --primary-color: #fce138;
   --eerie-black: #1a1d19ff;
   --middle-grey: #7f786fff;
   --indigo-dye: #124568ff;
   --black-chocolate: #21221bff;
   --liver-organ: #752f22ff;
+  --color-canvas-default: #ffffff;
+
   /* Github body background color */
   --color-canvas-default: #ffffff;
   --color-fg-default: #24292f;
@@ -30,7 +33,7 @@ body {
   /* font-family:  */
   font-size: 14px;
   line-height: 1.5;
-  color: var(--color-fg-default);
+  color: var(--eerie-black);
   background-color: var(--color-canvas-default);
 }
 
@@ -43,13 +46,25 @@ footer,
 header,
 main,
 menu,
-nav-GS,
 section {
   display: block;
 }
 
-ul-GS,
-ol-GS {
+nav {
+  /* -webkit-box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%); */
+  box-shadow: none;
+}
+
+nav .brand-logo {
+  color: var(--eerie-black);
+}
+
+nav a {
+  color: var(--eerie-black);
+}
+
+ul,
+ol {
   padding-left: 0;
   margin-top: 0;
   margin-bottom: 0;
@@ -94,6 +109,10 @@ button {
 p {
   margin-top: 0;
   margin-bottom: 10px;
+}
+
+.page-footer {
+  background-color: var(--eerie-black);
 }
 
 /* Materialize Styling  */
@@ -191,6 +210,9 @@ nav .brand-logo {
   word-wrap: normal;
   border: 0;
 }
+/* input[type="email"]:not(.browser-default) {
+  background-color: white;
+} */
 
 /* SIGN UP BUTTON */
 .form-control,
@@ -198,7 +220,7 @@ nav .brand-logo {
   padding: 5px 12px;
   font-size: 14px;
   line-height: 20px;
-  color: var(--color-fg-default);
+  color: var(--eerie-black);
   vertical-align: middle;
   background-color: var(--color-canvas-default);
   background-repeat: no-repeat;
@@ -317,7 +339,7 @@ nav .brand-logo {
   padding-top: 12px;
   padding-bottom: 12px;
   color: #fff;
-  background-color: var(--color-header-bg);
+  background-color: var(--eerie-black);
 }
 
 .d-flex {
