@@ -694,12 +694,12 @@ footer.page-footer {
 /*
  * LOGIN PAGE STYLES ===START=== 
  */
-.bg-img {
+/* .bg-img {
   background: url("../images/nubelson-fernandes--Xqckh_XVU4-unsplash.jpg");
   height: 100vh;
   background-size: cover;
   background-position: center;
-}
+} */
 
 .big-img:after {
   position: absolute;
