@@ -1,7 +1,14 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
 :root {
   /* CSS HEX */
   /* Git Social color scheme */
-  --liver-organ: #752f22ff;
   --primary-color: #fce138;
   --eerie-black: #1a1d19ff;
   --middle-grey: #7f786fff;
@@ -16,17 +23,10 @@
   --color-header-bg: #24292f;
 }
 
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Poppins:400,500&display=swap");
+/* Github Style */
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
-  user-select: none;
 }
-
-/*
- * WELCOME  PAGE STYLES ===START=== 
- */
 
 /* Github Style */
 body {
@@ -687,143 +687,3 @@ nav .brand-logo {
 footer.page-footer {
   margin: 0;
 }
-/*
- * WELCOME  PAGE STYLES ===END=== 
- */
-
-/*
- * LOGIN PAGE STYLES ===START=== 
- */
-.bg-img {
-  background: url("../images/nubelson-fernandes--Xqckh_XVU4-unsplash.jpg");
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
-}
-
-.big-img:after {
-  position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.174);
-}
-
-.content {
-  border-radius: 10px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 999;
-  text-align: center;
-  padding: 60px 32px;
-  width: 370px;
-  transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.133);
-}
-
-.content header {
-  color: white;
-  font-size: 33px;
-  font-weight: 600;
-  margin: 0 0 35px 0;
-  font-family: "Montserrat", sans-serif;
-}
-
-.field {
-  position: relative;
-  height: 45px;
-  width: 100%;
-  display: flex;
-  background: rgba(255, 255, 255, 0.94);
-}
-
-.field span {
-  color: #222;
-  width: 40px;
-  line-height: 45px;
-}
-
-.field input {
-  /* height: 100px; */
-  width: 100%;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: #222;
-  font-size: 16px;
-  font-family: "Poppins", sans-serif;
-}
-
-.space {
-  margin-top: 16px;
-}
-
-.show {
-  position: absolute;
-  right: 13px;
-  font-size: 13px;
-  font-weight: 700;
-  color: #222;
-  display: none;
-  cursor: pointer;
-  font-family: "Montserrat", sans-serif;
-}
-
-.pass-key:valid ~ .show {
-  display: block;
-}
-
-.pass {
-  text-align: left;
-  margin: 10px 0;
-}
-
-.pass a {
-  color: white;
-  text-decoration: none;
-  font-family: "Poppins", sans-serif;
-}
-
-.pass:hover a {
-  text-decoration: underline;
-}
-
-.field input [type="submit"] {
-  background: #682efc;
-  border: 1px solid #7741fd;
-  color: white;
-  font-size: 18px;
-  letter-spacing: 1px;
-  font-weight: 600;
-  cursor: pointer;
-  font-family: "Montserrat", sans-serif;
-  transition: 0.3x ease;
-}
-
-.field input [type="submit"]:hover {
-  background: #4a0de4f5;
-}
-
-.login {
-  color: white;
-  margin: 20px 0;
-  font-family: "Poppins", sans-serif;
-}
-
-.login-button {
-  background-color: var(--liver-organ);
-}
-
-i span {
-  margin-left: 8px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  font-size: 16px;
-  font-family: "Poppins", sans-serif;
-}
-/*
- * LOGIN PAGE STYLES ===END=== 
- */
