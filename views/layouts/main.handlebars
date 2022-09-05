@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Parallax Template - Materialize</title>
+    <title>Git Social</title>
     <!-- CSS  -->
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -55,13 +55,29 @@
                     <div
                       class="position-relative mr-3 mb-4 mb-lg-0 d-inline-block hide-on-med-and-down"
                     >
-                      <a href="#">Logout</a>
+                      <ul
+                        class="d-lg-flex list-style-none hide-on-med-and-down"
+                      >
+                        <li class="nav-item">
+                          <a href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="#">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="#">Posts</a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="#">Friends</a>
+                        </li>
+                        <button id="logout">Logout</button>
+                      </ul>
                     </div>
                   {{else}}
                     <div
                       class="position-relative mr-3 mb-4 mb-lg-0 d-inline-block hide-on-med-and-down"
                     >
-                      <a href="#">Sign in</a>
+                      <a href="/login">Sign in</a>
                     </div>
                   {{/if}}
                 </div>
