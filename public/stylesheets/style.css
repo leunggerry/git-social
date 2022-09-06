@@ -54,11 +54,10 @@ section {
 nav {
   /* -webkit-box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%); */
   box-shadow: none;
+  /* Set width to 0 so Materialize nav doesn't popup */
+  width: 0;
+  background-color: var(--eerie-black);
 }
-
-/* nav .brand-logo {
-  color: var(--eerie-black);
-} */
 
 /* nav a {
   color: var(--eerie-black);
@@ -139,15 +138,21 @@ footer.page-footer {
   background-color: var(--liver-organ);
 }
 .card {
-  background-color: var(--middle-grey);
+  background-color: var(--eerie-black);
 }
 
 .main-background-image {
-  background: url("../images/kyle-sung-oQuP_XBjOMY-unsplash.jpg");
-  height: 100vh;
+  background-color: var(--black-chocolate);
+  /* background: url("../images/kyle-sung-oQuP_XBjOMY-unsplash.jpg"); */
+  /* height: 100vh; */
   background-size: cover;
   background-position: center;
 }
+/* .main-background-color {
+  background-color: var(--black-chocolate);
+  background-size: cover;
+  background-position: center;
+} */
 /* Materialize Styling  */
 /* ===================================== */
 /* nav ul a,
@@ -422,7 +427,6 @@ nav .brand-logo {
 .home-hero-container {
   min-height: 750px;
   max-height: 926px;
-  /* background-color: #040d21; */
 }
 
 .home-hero {
@@ -566,6 +570,9 @@ nav .brand-logo {
 }
 
 @media (min-width: 544px) {
+  .home-hero-container {
+    min-height: 850px;
+  }
   .width-sm-auto {
     width: auto !important;
   }
