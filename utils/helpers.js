@@ -29,4 +29,9 @@ module.exports = {
     }
     return currentPage;
   },
+
+  getGithubUsername: (url) => {
+    const username = url.split("/")[url.split("/").length - 1];
+
+    return username;
 };

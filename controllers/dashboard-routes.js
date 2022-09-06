@@ -10,22 +10,16 @@ router.get("/", withAuth, (req, res) => {
       //use the ID from the session
       user_id: req.session.user_id,
     },
-    attributes: [
-      "id",
-      "post_url",
-      "title",
-      "created_at",
-      [sequelize.literal("(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)"), "vote_count"],
-    ],
+    attributes: ["id", "title", "text_body", "github_repo_url", "created_at"],
     include: [
-      {
-        model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
-        include: {
-          model: User,
-          attributes: ["username"],
-        },
-      },
+      // {
+      //   model: Comment,
+      //   attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+      //   include: {
+      //     model: User,
+      //     attributes: ["username"],
+      //   },
+      // },
       {
         model: User,
         attributes: ["username"],
@@ -38,6 +32,7 @@ router.get("/", withAuth, (req, res) => {
       // hard code loggedIn true on this route, becasue a user wont
       // be able to get to the dashboard unless they are logged in
       res.render("dashboard", { posts, loggedIn: true });
+      //res.json(dbPostData);
     })
     .catch((err) => {
       console.log(err);
