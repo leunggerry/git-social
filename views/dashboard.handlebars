@@ -16,8 +16,8 @@
   {{!-- if there posts show them --}}
   {{#if posts.length}}
   <div class="row">
+    {{#each posts as |post|}}
     <div class="col s6 m6 l6">
-      {{#each posts as |post|}}
       <div class="card stick-action blue-grey darken-1">
         <div class="card-content activator white-text">
           <span class="card-title">{{post.title}}<i class="material-icons right">more_vert</i></span>
@@ -32,8 +32,9 @@
           <p>Add to DB by {{post.user.username}} on {{format_date created_at}}</p>
         </div>
       </div>
-      {{/each}}
     </div>
+    {{/each}}
+
   </div>
   {{/if}}
 </div>
