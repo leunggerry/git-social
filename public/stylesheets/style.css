@@ -1,6 +1,6 @@
 :root {
   /* CSS HEX */
-  /* Git Social color scheme */
+  /* Git Social Dark color scheme */
   --liver-organ: #752f22ff;
   --primary-color: #fce138;
   --eerie-black: #1a1d19ff;
@@ -8,6 +8,12 @@
   --indigo-dye: #124568ff;
   --black-chocolate: #21221bff;
   --color-canvas-default: #ffffff;
+
+  /* Git Social Light color scheme */
+  --myrtle-green: #37756cff;
+  --green-pigment: #2ea04fff;
+  --ivory: #f7f8ebff;
+  --kombu-green: #3a3e27ff;
 
   /* Github body background color */
   --color-canvas-default: #ffffff;
@@ -106,8 +112,28 @@ p {
   margin-bottom: 10px;
 }
 
+.page-container {
+  position: relative;
+  min-height: 100vh;
+}
+.content-wrap {
+  padding-bottom: 2.5rem; /* Footer height */
+}
+footer.page-footer {
+  margin: 0;
+  /* keep footer at the bottom */
+  position: absolute;
+  /* bottom: 0;  */
+  width: 100%;
+  /* height: 2.5rem; Footer height */
+}
+
 .page-footer {
   background-color: var(--eerie-black);
+}
+.comment-button {
+  /* #BDCA9A */
+  background-color: var(--green-pigment);
 }
 .logout-button {
   background-color: var(--liver-organ);
@@ -116,12 +142,12 @@ p {
   background-color: var(--middle-grey);
 }
 
-/* .home-img {
-  background: url("../images/nubelson-fernandes--Xqckh_XVU4-unsplash.jpg");
+.main-background-image {
+  background: url("../images/kyle-sung-oQuP_XBjOMY-unsplash.jpg");
   height: 100vh;
   background-size: cover;
   background-position: center;
-} */
+}
 /* Materialize Styling  */
 /* ===================================== */
 /* nav ul a,
@@ -688,9 +714,6 @@ nav .brand-logo {
   font-size: inherit;
 }
 
-footer.page-footer {
-  margin: 0;
-}
 /*
  * WELCOME  PAGE STYLES ===END=== 
  */

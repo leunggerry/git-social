@@ -12,10 +12,10 @@
             - Github repo</a>
           <a href="#">{{user.username}}</a>
           <span class="white-text">|</span>
-          <span class="white-text">Posted {{created_at}}</span>
+          <span class="white-text">Posted {{format_date created_at}}</span>
           <div>|</div>
           <a class="white-text" href="/post/{{id}}">{{comments.length}}
-            comment(s)</a>
+            {{format_plural "comment" comments.length}}</a>
         </div>
       </div>
     </div>

@@ -7,6 +7,7 @@ const withAuth = require("../../utils/auth");
 router.get("/", (req, res) => {
   console.log("======================");
   Post.findAll({
+    order: [["created_at", "DESC"]],
     attributes: ["id", "title", "text_body", "github_repo_url", "created_at"],
     include: [
       {
@@ -64,10 +65,10 @@ router.get("/:id", (req, res) => {
     });
 });
 
-// Create a Post 
+// Create a Post
 // @TODO took out utilities of user authenitcation session
 router.post("/", (req, res) => {
-// router.post("/", withAuth, (req, res) => {
+  // router.post("/", withAuth, (req, res) => {
   // expects {title: 'Taskmaster', text_body: "Donec", github_repo_url: 'https://taskmaster.com/press', user_id: 1}
   Post.create({
     title: req.body.title,
@@ -87,7 +88,7 @@ router.post("/", (req, res) => {
 // Update a post
 // @Todo took out user authentication
 router.put("/:id", (req, res) => {
-// router.put("/:id", withAuth, (req, res) => {
+  // router.put("/:id", withAuth, (req, res) => {
   Post.update(
     {
       title: req.body.title,
@@ -117,7 +118,7 @@ router.put("/:id", (req, res) => {
 // Delete a post
 // @TODO took out user authentication
 router.delete("/:id", (req, res) => {
-// router.delete("/:id", withAuth, (req, res) => {
+  // router.delete("/:id", withAuth, (req, res) => {
   console.log("id", req.params.id);
   Post.destroy({
     where: {
