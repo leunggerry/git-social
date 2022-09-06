@@ -542,7 +542,7 @@ nav .brand-logo {
 
 /* Materialize Styling  */
 .sidenav-trigger {
-  color: #26a69a;
+  color: white;
 }
 
 .parallax-container {
@@ -759,7 +759,7 @@ nav .brand-logo {
 }
 
 .content header {
-  color: white;
+  color: var(--eerie-black);
   font-size: 33px;
   font-weight: 600;
   margin: 0 0 35px 0;
@@ -776,7 +776,8 @@ nav .brand-logo {
 
 .field span {
   color: #222;
-  width: 40px;
+  /* remove left side spacing in input box 
+  width: 40px; */
   line-height: 45px;
 }
 
@@ -798,7 +799,7 @@ nav .brand-logo {
 .show {
   position: absolute;
   right: 13px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   color: #222;
   display: none;
@@ -816,7 +817,7 @@ nav .brand-logo {
 }
 
 .pass a {
-  color: white;
+  color: var(--eerie-black);
   text-decoration: none;
   font-family: "Poppins", sans-serif;
 }

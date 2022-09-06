@@ -1,54 +1,115 @@
-<div class="container">
-  <div class="row">
-    <div class="col s12 m12 l12">
-      <div class="section">
-        <form class="new-post-form">
-          <div>
-            <label for="Post-title">Title</label>
-            <input type="text" id="post-title" name="post-title" />
-          </div>
-          <div>
-            <label for="github-reponame">Repo Name:</label>
-            <input id="github-reponame" name="github-reponame" placeholder="Repo Name"/>
-          </div>
-          <div>
-            <label for="github-repo-url">Repo URL:</label>
-            <input id="github-repo-url" name="github-repo-url" placeholder="Repo URL"/>
-          </div>
-          {{!-- <div>
+<div class="main-background-image">
+  <div class="container">
+    <div class="section">
+      <div class="content-wrap page-container">
+        <div class="row">
+          <div class="col s8 m8 l8">
+            <div class="section">
+              <form class="new-post-form">
+                <div>
+                  <label for="Post-title">Title</label>
+                  <input type="text" id="post-title" name="post-title" />
+                </div>
+                <div>
+                  <label for="github-reponame">Repo Name:</label>
+                  <input
+                    id="github-reponame"
+                    name="github-reponame"
+                    placeholder="Repo Name"
+                  />
+                </div>
+                <div>
+                  <label for="github-repo-url">Repo URL:</label>
+                  <input
+                    id="github-repo-url"
+                    name="github-repo-url"
+                    placeholder="Repo URL"
+                  />
+                </div>
+                {{! <div>
             <label for="repo-description">Description:</label>
             <textarea id="repo-description" name="repo-description" placeholder="Description"/>
-          </div> --}}
-          <button type="submit" class="btn">Create</button>
-        </form>
+          </div> }}
+                <button type="submit" class="btn">Create</button>
+              </form>
+            </div>
+          </div>
+          <div class="col s4 m4 l4">
+            <a
+              href="#"
+              data-target="slide-out"
+              class="waves-effect waves-light btn-small sidenav-trigger"
+              id="friends"
+            ><i class="material-icons left">cloud</i>Friends</a>
+            <li><a href="#!">{{friends}}test</a></li>
+            {{#each friends}}
+              <li><a href="#!">{{friends}}test</a></li>
+            {{/each}}
+          </div>
+        </div>
+
+        {{! if there posts show them }}
+        {{#if posts.length}}
+          <div class="row">
+            {{#each posts as |post|}}
+              <div class="col s6 m6 l6">
+                <div class="card stick-action blue-grey darken-1">
+                  <div class="card-content activator white-text">
+                    <span class="card-title">{{post.title}}<i
+                        class="material-icons right"
+                      >more_vert</i></span>
+                    <a
+                      class="btn-floating halfway-fab waves-effect waves-light red add-comment"
+                    ><i class="material-icons">add</i></a>
+                    <p>{{post.text_body}}</p>
+                  </div>
+                  <div class="card-action">
+                    <a
+                      href="{{post.github_repo_url}}"
+                      target="_blank"
+                    >{{getGithubUsername post.github_repo_url}}</a>
+                    <a href="/post/{{id}}">{{comments.length}}
+                      {{format_plural "comment" comments.length}}</a>
+                  </div>
+                  <div class="card-reveal">
+                    <span class="card-title">Created<i
+                        class="material-icons right"
+                      >close</i></span>
+                    <p>Add to DB by
+                      {{post.user.username}}
+                      on
+                      {{format_date created_at}}</p>
+                  </div>
+                </div>
+              </div>
+            {{/each}}
+
+          </div>
+        {{/if}}
+        {{! side nav for friends list }}
+        <ul id="slide-out" class="sidenav">
+          <li>
+            <div class="user-view">
+              <div class="background">
+                <img src="" />
+              </div>
+            </div>
+          </li>
+          <li><a href="#!">{{user}}test</a></li>
+          {{#each friends}}
+            <li><a href="#!">{{friends}}test</a></li>
+          {{/each}}
+          {{! <li><a href="#!"><i class="material-icons">cloud</i>First Link With
+              Icon</a></li>
+          <li><a href="#!">Second Link</a></li>
+          <li><div class="divider"></div></li>
+          <li><a class="subheader">Subheader</a></li>
+          <li><a class="waves-effect" href="#!">Third Link With Waves</a></li> }}
+        </ul>
       </div>
     </div>
   </div>
-
-  {{!-- if there posts show them --}}
-  {{#if posts.length}}
-  <div class="row">
-    {{#each posts as |post|}}
-    <div class="col s6 m6 l6">
-      <div class="card stick-action blue-grey darken-1">
-        <div class="card-content activator white-text">
-          <span class="card-title">{{post.title}}<i class="material-icons right">more_vert</i></span>
-          <a class="btn-floating halfway-fab waves-effect waves-light red add-comment"><i class="material-icons">add</i></a>
-          <p>{{post.text_body}}</p>
-        </div>
-        <div class="card-action">
-          <a href="{{post.github_repo_url}}" target="_blank">{{getGithubUsername post.github_repo_url}}</a>
-          <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title">Created<i class="material-icons right">close</i></span>
-          <p>Add to DB by {{post.user.username}} on {{format_date created_at}}</p>
-        </div>
-      </div>
-    </div>
-    {{/each}}
-
-  </div>
-  {{/if}}
 </div>
+
 <script src="/javascript/add-post.js"></script>
+<script src="javascript/friendslist.js"></script>

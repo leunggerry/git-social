@@ -8,7 +8,7 @@ const commentRoutes = require("./comment-routes");
 
 router.use("/users", userRoutes);
 router.use("/friends-requests", friendRequestRoutes);
-router.use("/friends-list", friendsListRoutes);
+router.use("/friendsList", friendsListRoutes);
 router.use("/posts", postRoutes);
 router.use("/comments", commentRoutes);
 

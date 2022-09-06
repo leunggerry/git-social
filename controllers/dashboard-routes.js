@@ -50,7 +50,12 @@ router.get("/edit/:id", withAuth, (req, res) => {
       "post_url",
       "title",
       "created_at",
-      [sequelize.literal("(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)"), "vote_count"],
+      [
+        sequelize.literal(
+          "(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)"
+        ),
+        "vote_count",
+      ],
     ],
     include: [
       {
@@ -76,4 +81,35 @@ router.get("/edit/:id", withAuth, (req, res) => {
       res.status(500).json(err);
     });
 });
+
+// get a user's friends for their friend's list
+router.get("/friendsList/:id", (req, res) => {
+  User.findOne({
+    where: {
+      id: req.params.id,
+    },
+    include: ["friends"],
+  })
+    .then((dbUsersFriends) => {
+      if (!dbUsersFriends) {
+        res.status(404).json({ message: "No friends found for this user" });
+        return;
+      }
+
+      const friends = dbUsersFriends.map((friend) =>
+        friend.get({ plain: true })
+      );
+
+      // serialize the data
+      // const friends = dbUsersFriends.get({ plain: true });
+
+      // pass data to template
+      res.render("dashboard", { friends, loggedIn: req.session.loggedIn });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 module.exports = router;
