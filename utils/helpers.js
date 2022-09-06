@@ -15,10 +15,15 @@ module.exports = {
   format_url: (url) => {
     //replace returns the modified string, chain methods
     return url
-    .replace("http://", "")
-    .replace("https://", "")
-    .replace('www.', '')
-    .split('/')[0]
-    .split('?')[0];;
+      .replace("http://", "")
+      .replace("https://", "")
+      .replace("www.", "")
+      .split("/")[0]
+      .split("?")[0];
+  },
+  getGithubUsername: (url) => {
+    const username = url.split("/")[url.split("/").length - 1];
+
+    return username;
   },
 };
