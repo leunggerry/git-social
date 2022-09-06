@@ -19,6 +19,10 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    repo_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     github_repo_url: {
       type: DataTypes.STRING,
       allowNull: false,

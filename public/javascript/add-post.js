@@ -1,14 +1,19 @@
 async function newFormHandler(event) {
   event.preventDefault();
 
+  console.log("post button clicked");
   const title = document.querySelector('input[name="post-title"]').value;
-  const post_url = document.querySelector('input[name="post-url"]').value;
+  const repo_name = document.querySelector('input[name="github-reponame"]').value;
+  const github_repo_url = document.querySelector('input[name="github-repo-url"]').value;
+  const text_body = document.querySelector('textarea[name="repo-description"]').value;
 
   const response = await fetch(`/api/posts`, {
     method: "POST",
     body: JSON.stringify({
       title,
-      post_url,
+      repo_name,
+      github_repo_url,
+      text_body,
     }),
     headers: {
       "Content-Type": "application/json",

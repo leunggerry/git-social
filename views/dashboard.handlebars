@@ -15,11 +15,11 @@
             <label for="github-repo-url">Repo URL:</label>
             <input id="github-repo-url" name="github-repo-url" placeholder="Repo URL"/>
           </div>
-          {{!-- <div>
-            <label for="repo-description">Description:</label>
-            <textarea id="repo-description" name="repo-description" placeholder="Description"/>
-          </div> --}}
-          <button type="submit" class="btn">Create</button>
+          <div class="input-field">
+            <textarea id="repo-description" class="materialize-textarea" name="repo-description" placeholder="Description"></textarea>
+            <label for="repo-description">Repo Description:</label>
+          </div>
+          <button type="submit" class="btn" id="new-post-form">Create</button>
         </form>
       </div>
     </div>
@@ -37,7 +37,7 @@
           <p>{{post.text_body}}</p>
         </div>
         <div class="card-action">
-          <a href="{{post.github_repo_url}}" target="_blank">{{getGithubUsername post.github_repo_url}}</a>
+          <a href="{{post.github_repo_url}}" target="_blank">{{post.repo_name}}</a>
           <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
         </div>
         <div class="card-reveal">

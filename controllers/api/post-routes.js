@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("../../config/connection");
-const { Post, User } = require("../../models");
+const { Post, User, Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 // get all Posts
@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
   console.log("======================");
   Post.findAll({
     order: [["created_at", "DESC"]],
-    attributes: ["id", "title", "text_body", "github_repo_url", "created_at"],
+    attributes: ["id", "title", "text_body", "repo_name", "github_repo_url", "created_at"],
     include: [
       {
         model: Comment,
@@ -36,7 +36,7 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "title", "text_body", "github_repo_url", "created_at"],
+    attributes: ["id", "title", "text_body", "repo_name", "github_repo_url", "created_at"],
     include: [
       {
         model: Comment,
@@ -70,13 +70,18 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
   // router.post("/", withAuth, (req, res) => {
   // expects {title: 'Taskmaster', text_body: "Donec", github_repo_url: 'https://taskmaster.com/press', user_id: 1}
+  console.log("user_id: " + req.session.user_id);
+  console.log("title: " + req.body.title);
+  console.log("text_body: " + req.body.text_body);
+  console.log("repo_name: " + req.body.repo_name);
+  console.log("github_repo_url: " + req.body.github_repo_url);
+
   Post.create({
     title: req.body.title,
     text_body: req.body.text_body,
+    repo_name: req.body.repo_name,
     github_repo_url: req.body.github_repo_url,
-    user_id: req.body.user_id,
-    // take out session for now
-    //user_id: req.session.user_id,
+    user_id: req.session.user_id,
   })
     .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {
@@ -93,6 +98,7 @@ router.put("/:id", (req, res) => {
     {
       title: req.body.title,
       text_body: req.body.text_body,
+      repo_name: req.body.repo_name,
       github_repo_url: req.body.github_repo_url,
       user_id: req.body.user_id, //used by last updated
     },
