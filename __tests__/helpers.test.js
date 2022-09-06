@@ -21,3 +21,9 @@ test("format_url() returns a simplified url string", () => {
   expect(url2).toBe("coolstuff.com");
   expect(url3).toBe("google.com");
 });
+
+// check the current document location
+// test("current document location", () => {
+//   const currentPage = document.location.pathname;
+//   expect(check_document_location(currentPage)).toBe("/login");
+// });

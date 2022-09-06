@@ -2,14 +2,15 @@ const { Post } = require("../models");
 
 const postdata = [
   {
-    title: "Donec posuere ",
-    text_body: "Donec posuere metus vitae ipsum.",
+    title: "Iron Man Suit",
+    text_body:
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consect",
     github_repo_url:
       "https://buzzfeed.com/in/imperdiet/et/commodo/vulputate.png",
     user_id: 10,
   },
   {
-    title: "Morbi non quam ",
+    title: "Siri ate my lunch",
     text_body: "Morbi non quam nec dui luctus rutrum.",
     github_repo_url: "https://nasa.gov/donec.json",
     user_id: 8,
