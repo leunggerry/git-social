@@ -1,6 +1,14 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
+/**
+ * @description Model representing the Friendship table
+ * @param {int} requesterId - user id of the user sending the friend request
+ * @param {int} addresseeId - user id of the user receiving the friend request
+ * @param {string} statusCode - the status of the friend request
+ * @default ["R"]
+ * @param {Date} requestedDateTime - the date of the request is sent
+ */
 class Friendship extends Model {}
 
 Friendship.init(

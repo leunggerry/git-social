@@ -1,0 +1,11 @@
+{
+    "source": {
+        "include": ["models", "controllers", "controllers/api", "public/javascript", "utils"],
+        "exclude": ["public/javascript/materializeJS", "seeds"],
+        "includePattern": ".+\\.js(doc|x)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "opts": {
+        "destination": "./docs/"
+    }
+}
