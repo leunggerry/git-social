@@ -11,44 +11,47 @@
       </div>
     </div>
     <!-- Sign up -->
-    <div
-      class="home-hero position-absolute z-1 top-0 right-0 bottom-0 left-0 overflow-hidden"
-    >
+    {{! this will remove this div until we can conditionally render it }}
+    {{#if check_document_location}}
       <div
-        class="d-flex flex-column flex-justify-between mx-auto container-xl p-responsive height-full pb-md-9"
+        class="home-hero position-absolute z-1 top-0 right-0 bottom-0 left-0 overflow-hidden"
       >
         <div
-          class="d-flex flex-column flex-lg-row flex-items-center height-full"
+          class="d-flex flex-column flex-justify-between mx-auto container-xl p-responsive height-full pb-md-9"
         >
-          <div class="col-12 col-lg-7 text-center text-md-left">
-            <h1 class="h2-mktg color-text-white mb-3 position-relative z-2">
-              Time to Git Social
-            </h1>
-            <p
-              class="f2-mktg col-md-7 col-lg-11 col-xl-10 text-normal text-gray-light-mktg mr-lg-n4 mb-4 position-relative z-2"
-            >
-              Sign up here.
-            </p>
-            <form
-              data-turbo="false"
-              class="mx-auto mx-md-0 col-5-max js-signup-form position-relative z-2"
-              autocomplete="off"
-              action="/sign-up"
-              accept-charset="UTF-8"
-              method="get"
-            >
-              <div class="d-flex flex-column flex-sm-row flex-items-center">
-                <button
-                  class="btn-mktg width-full width-sm-auto btn-signup-mktg"
-                  type="submit"
-                >
-                  Sign up for Git Social
-                </button>
-              </div>
-            </form>
+          <div
+            class="d-flex flex-column flex-lg-row flex-items-center height-full"
+          >
+            <div class="col-12 col-lg-7 text-center text-md-left">
+              <h1 class="h2-mktg color-text-white mb-3 position-relative z-2">
+                Time to Git Social
+              </h1>
+              <p
+                class="f2-mktg col-md-7 col-lg-11 col-xl-10 text-normal text-gray-light-mktg mr-lg-n4 mb-4 position-relative z-2"
+              >
+                Sign up here.
+              </p>
+              <form
+                data-turbo="false"
+                class="mx-auto mx-md-0 col-5-max js-signup-form position-relative z-2"
+                autocomplete="off"
+                action="/sign-up"
+                accept-charset="UTF-8"
+                method="get"
+              >
+                <div class="d-flex flex-column flex-sm-row flex-items-center">
+                  <button
+                    class="btn-mktg width-full width-sm-auto btn-signup-mktg"
+                    type="submit"
+                  >
+                    Sign up for Git Social
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    {{/if}}
   </div>
 </section>
