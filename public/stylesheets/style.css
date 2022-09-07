@@ -127,9 +127,21 @@ footer.page-footer {
   /* height: 2.5rem; Footer height */
 }
 
+.user-view-social {
+  padding: 32px 32px 16px !important;
+}
+
+.repo-url {
+  color: black !important;
+}
+
 .page-footer {
   background-color: var(--eerie-black);
 }
+.friend-nav-title {
+  background-color: #26a69a;
+}
+
 .comment-button {
   /* #BDCA9A */
   background-color: var(--green-pigment);
