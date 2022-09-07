@@ -10,7 +10,14 @@ router.get("/", withAuth, (req, res) => {
       //use the ID from the session
       user_id: req.session.user_id,
     },
-    attributes: ["id", "title", "text_body", "repo_name", "github_repo_url", "created_at"],
+    attributes: [
+      "id",
+      "title",
+      "text_body",
+      "repo_name",
+      "github_repo_url",
+      "created_at",
+    ],
     include: [
       {
         model: Comment,
@@ -87,24 +94,28 @@ router.get("/friendsList/:id", (req, res) => {
   User.findOne({
     where: {
       id: req.params.id,
+      // id: req.session.user_id,
     },
     include: ["friends"],
   })
     .then((dbUsersFriends) => {
+      console.log(dbUsersFriends);
       if (!dbUsersFriends) {
         res.status(404).json({ message: "No friends found for this user" });
         return;
       }
 
-      const friends = dbUsersFriends.map((friend) =>
-        friend.get({ plain: true })
-      );
+      const user = dbUsersFriends.get({ plain: true });
+      const friendsArray = user.friends;
 
-      // serialize the data
-      // const friends = dbUsersFriends.get({ plain: true });
+      const friendsList = friendsArray.map((friend) => {
+        return {
+          username: friend.username,
+        };
+      });
 
       // pass data to template
-      res.render("dashboard", { friends, loggedIn: req.session.loggedIn });
+      res.render("dashboard", { friendsList, loggedIn: req.session.loggedIn });
     })
     .catch((err) => {
       console.log(err);

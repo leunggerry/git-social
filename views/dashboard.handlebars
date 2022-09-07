@@ -28,7 +28,12 @@
                 </div>
                 <div>
                   <label for="repo-description">Description:</label>
-                  <textarea id="repo-description"  class="materialize-textarea" name="repo-description" placeholder="Description"></textarea>
+                  <textarea
+                    id="repo-description"
+                    class="materialize-textarea"
+                    name="repo-description"
+                    placeholder="Description"
+                  ></textarea>
                 </div>
                 <button type="submit" class="btn">Create</button>
               </form>
@@ -36,40 +41,49 @@
           </div>
           <div class="col s4 m4 l4">
             <a
-              href="#"
+              href="/friendsList/1"
               data-target="slide-out"
               class="waves-effect waves-light btn-small sidenav-trigger"
               id="friends"
             ><i class="material-icons left">cloud</i>Friends</a>
-            <li><a href="#!">{{friends}}test</a></li>
-            {{#each friends}}
-              <li><a href="#!">{{friends}}test</a></li>
-            {{/each}}
           </div>
         </div>
 
-  {{!-- if there posts show them --}}
-  {{#if posts.length}}
-  <div class="row">
-    {{#each posts as |post|}}
-    <div class="col s6 m6 l6">
-      <div class="card stick-action blue-grey darken-1">
-        <div class="card-content activator white-text">
-          <span class="card-title">{{post.title}}<i class="material-icons right">more_vert</i></span>
-          <a class="btn-floating halfway-fab waves-effect waves-light red add-comment"><i class="material-icons">add</i></a>
-          <p>{{post.text_body}}</p>
-        </div>
-        <div class="card-action">
-          <a href="{{post.github_repo_url}}" target="_blank">{{post.repo_name}}</a>
-          <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title">Created<i class="material-icons right">close</i></span>
-          <p>Add to DB by {{post.user.username}} on {{format_date created_at}}</p>
-        </div>
-      </div>
-    </div>
-    {{/each}}
+        {{! if there posts show them }}
+        {{#if posts.length}}
+          <div class="row">
+            {{#each posts as |post|}}
+              <div class="col s6 m6 l6">
+                <div class="card stick-action blue-grey darken-1">
+                  <div class="card-content activator white-text">
+                    <span class="card-title">{{post.title}}<i
+                        class="material-icons right"
+                      >more_vert</i></span>
+                    <a
+                      class="btn-floating halfway-fab waves-effect waves-light red add-comment"
+                    ><i class="material-icons">add</i></a>
+                    <p>{{post.text_body}}</p>
+                  </div>
+                  <div class="card-action">
+                    <a
+                      href="{{post.github_repo_url}}"
+                      target="_blank"
+                    >{{post.repo_name}}</a>
+                    <a href="/post/{{id}}">{{comments.length}}
+                      {{format_plural "comment" comments.length}}</a>
+                  </div>
+                  <div class="card-reveal">
+                    <span class="card-title">Created<i
+                        class="material-icons right"
+                      >close</i></span>
+                    <p>Add to DB by
+                      {{post.user.username}}
+                      on
+                      {{format_date created_at}}</p>
+                  </div>
+                </div>
+              </div>
+            {{/each}}
 
           </div>
         {{/if}}
@@ -82,16 +96,11 @@
               </div>
             </div>
           </li>
-          <li><a href="#!">{{user}}test</a></li>
-          {{#each friends}}
-            <li><a href="#!">{{friends}}test</a></li>
-          {{/each}}
-          {{! <li><a href="#!"><i class="material-icons">cloud</i>First Link With
-              Icon</a></li>
-          <li><a href="#!">Second Link</a></li>
-          <li><div class="divider"></div></li>
-          <li><a class="subheader">Subheader</a></li>
-          <li><a class="waves-effect" href="#!">Third Link With Waves</a></li> }}
+          {{#if friendsList.length}}
+            {{#each friendsList as |friend|}}
+              <li><a href="#!">{{friend.username}}</a></li>
+            {{/each}}
+          {{/if}}
         </ul>
       </div>
     </div>

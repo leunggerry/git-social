@@ -36,8 +36,9 @@
         role="banner"
       >
         <nav class="nav-wrapper container">
-          {{!-- TODO: this should link to home --}}
-          <a id="logo-container" href="#!" class="brand-logo white-text">Git Social</a>
+          {{! TODO: this should link to home }}
+          <a id="logo-container" href="#!" class="brand-logo white-text">Git
+            Social</a>
           <div class="mt-0 px-3 px-lg-0 mb-5 mb-lg-0">
             <div class="container-xl d-lg-flex flex-items-center p-responsive">
               <div
@@ -62,25 +63,28 @@
                       <ul
                         class="d-lg-flex list-style-none hide-on-med-and-down"
                       >
-                      {{!-- removed icons --}}                        
+                        {{! removed icons }}
                         <li class="nav-item">
-                          {{!-- removed icons --}}                          
+                          {{! removed icons }}
                           <a href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                          {{!-- removed icons --}}                          
+                          {{! removed icons }}
                           <a href="/dashboard">Dashboard</a>
                         </li>
-                        {{!-- <li class="nav-item">
+                        {{! <li class="nav-item">
                           removed icons 
                           <a href="#">Posts</a>
-                        </li> --}}
+                        </li> }}
                         <li class="nav-item">
-                          {{!-- removed icons --}}
+                          {{! removed icons }}
                           <a href="#">Friends</a>
                         </li>
                         <li class="nav-item">
-                          <a class="waves-effect waves-light btn-small logout-button" id="logout">Logout</a>
+                          <a
+                            class="waves-effect waves-light btn-small logout-button"
+                            id="logout"
+                          >Logout</a>
                         </li>
                       </ul>
                     </div>
@@ -89,6 +93,30 @@
                       class="position-relative mr-3 mb-4 mb-lg-0 d-inline-block hide-on-med-and-down"
                     >
                       <a href="/login">Sign in</a>
+                    </div>
+
+                    <div
+                      class="position-relative mr-3 mb-4 mb-lg-0 d-inline-block hide-on-med-and-down"
+                    >
+                      <form
+                        data-turbo="false"
+                        class="mx-auto mx-md-0 col-5-max js-signup-form position-relative z-2"
+                        autocomplete="off"
+                        action="/sign-up"
+                        accept-charset="UTF-8"
+                        method="get"
+                      >
+                        <div
+                          class="d-flex flex-column flex-sm-row flex-items-center"
+                        >
+                          <button
+                            class="btn-mktg width-full width-sm-auto btn-signup-mktg"
+                            type="submit"
+                          >
+                            Sign up for Git Social
+                          </button>
+                        </div>
+                      </form>
                     </div>
                   {{/if}}
                 </div>
