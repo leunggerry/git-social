@@ -68,9 +68,13 @@
 
           </div>
         </div>
+            {{/each}}
 
+=======
+        <div class="divider"></div>
         {{! if there posts show them }}
         {{#if posts.length}}
+        <div class="section">
           <div class="row">
             {{#each posts as |post|}}
               <div class="col s6 m6 l6">
@@ -104,8 +108,8 @@
                 </div>
               </div>
             {{/each}}
-
           </div>
+        </div>
         {{/if}}
         {{! side nav for friends list }}
         <ul id="slide-out" class="sidenav">
