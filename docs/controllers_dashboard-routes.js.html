@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: controllers/dashboard-routes.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: controllers/dashboard-routes.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @module dashboardRoutes
+ *
+ * @description End point routes for user dashboard
+ */
+const router = require("express").Router();
+const sequelize = require("../config/connection");
+const { Post, User, Comment } = require("../models");
+//import authentication
+const withAuth = require("../utils/auth");
+
+/**
+ * @function GET
+ * @description Get User's dashboard with all the User's posts
+ *
+ * @param {string} /
+ * @param {function} withAuth
+ * @param {object} (req,res)
+ *
+ * @return {render(dashboard)}
+ */
+router.get("/", withAuth, (req, res) => {
+  Post.findAll({
+    where: {
+      //use the ID from the session
+      user_id: req.session.user_id,
+    },
+    attributes: ["id", "title", "text_body", "repo_name", "github_repo_url", "created_at"],
+    include: [
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+      {
+        model: User,
+        attributes: ["username"],
+      },
+    ],
+  })
+    .then((dbPostData) => {
+      //serialize data before passing to template
+      const posts = dbPostData.map((post) => post.get({ plain: true }));
+      // hard code loggedIn true on this route, becasue a user wont
+      // be able to get to the dashboard unless they are logged in
+      res.render("dashboard", { posts, loggedIn: true });
+      //res.json(dbPostData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+/**
+ * @function GET
+ * @description Get User's edit form for a post
+ *
+ * @param {int} /edit/:id
+ * @param {function} withAuth
+ * @param {object} (req,res)
+ *
+ * @return {render(edit-post)}
+ */
+router.get("/edit/:id", withAuth, (req, res) => {
+  Post.findOne({
+    where: {
+      id: req.params.id,
+    },
+    attributes: [
+      "id",
+      "post_url",
+      "title",
+      "created_at",
+      [sequelize.literal("(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)"), "vote_count"],
+    ],
+    include: [
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+      {
+        model: User,
+        attributes: ["username"],
+      },
+    ],
+  })
+    .then((dbPostData) => {
+      const post = dbPostData.get({ plain: true });
+      res.render("edit-post", { post, loggedIn: true });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+/**
+ * @function GET
+ * @description Get User's friends
+ *
+ * @param {int} /friendsList/:id
+ * @param {object} (req,res)
+ *
+ * @return {render(dashboard)}
+ */
+router.get("/friendsList/:id", (req, res) => {
+  User.findOne({
+    where: {
+      id: req.params.id,
+      // id: req.session.user_id,
+    },
+    include: ["friends"],
+  })
+    .then((dbUsersFriends) => {
+      console.log(dbUsersFriends);
+      if (!dbUsersFriends) {
+        res.status(404).json({ message: "No friends found for this user" });
+        return;
+      }
+
+      const user = dbUsersFriends.get({ plain: true });
+      const friendsArray = user.friends;
+
+      const friendsList = friendsArray.map((friend) => {
+        return {
+          username: friend.username,
+        };
+      });
+
+      // pass data to template
+      res.render("dashboard", { friendsList, loggedIn: req.session.loggedIn });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+module.exports = router;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-commentsRoutes.html">commentsRoutes</a></li><li><a href="module-dashboardRoutes.html">dashboardRoutes</a></li><li><a href="module-DatabaseModel.html">DatabaseModel</a></li><li><a href="module-friendRequestRoutes.html">friendRequestRoutes</a></li><li><a href="module-homeRoutes.html">homeRoutes</a></li><li><a href="module-postRoutes.html">postRoutes</a></li><li><a href="module-userRoutes.html">userRoutes</a></li></ul><h3>Classes</h3><ul><li><a href="Comment.html">Comment</a></li><li><a href="Friendship.html">Friendship</a></li><li><a href="Post.html">Post</a></li><li><a href="User.html">User</a></li><li><a href="UsersFriends.html">UsersFriends</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Sep 07 2022 16:13:57 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
