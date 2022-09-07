@@ -7,7 +7,7 @@ async function friendsList(e) {
   });
 
   if (response.ok) {
-    document.location.replace("api/friendsList/1");
+    document.location.replace("dashboard/friendsList/1");
   } else {
     alert(response.statusText);
   }
