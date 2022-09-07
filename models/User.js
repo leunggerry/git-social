@@ -2,6 +2,15 @@ const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 const bcrypt = require("bcrypt");
 
+/**
+ * @description Model representing the User table
+ * @param {int} id - user id of the user
+ * @param {String} username - user usernmae
+ * @param {String} email - email of the user for login
+ * @param {String} password - password for user login
+ * @param {String} github_username - github username
+ */
+
 class User extends Model {
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
@@ -30,6 +39,7 @@ User.init(
         isEmail: true,
       },
     },
+
     password: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -53,10 +63,7 @@ User.init(
       },
       // set up beforeCreate lifecycle "hook" functionality
       async beforeUpdate(updatedUserData) {
-        updatedUserData.password = await bcrypt.hash(
-          updatedUserData.password,
-          10
-        );
+        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
         return updatedUserData;
       },
     },

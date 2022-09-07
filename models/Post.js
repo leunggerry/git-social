@@ -1,6 +1,17 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
+/**
+ *
+ * @description Model representing the Post table
+ * @param {int} id - Auto incrementing ID for each post in the table
+ * @param {int} title - Title of the post
+ * @param {string} text_body - Description of the post
+ * @param {Date} repo_name - Name of the repository
+ * @param {Date} github_repo_url - Repo URL
+ * @param {Date} user_id - User ID of the post author
+ *              @see User
+ */
 class Post extends Model {}
 
 Post.init(
