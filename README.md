@@ -11,6 +11,8 @@ SO THAT I can seek out other new developers willing to collaborate with me so we
 ## Table of Contents
 
 - [Usage](#usage)
+- [Start the application](#commands-to-start-the-application)
+- [Documentation](#documentation)
 - [Screenshots](#screenshots)
 - [Questions](#questions)
 
@@ -19,6 +21,17 @@ SO THAT I can seek out other new developers willing to collaborate with me so we
 Git Social is a social app for new developers to post about their projects and solicit help from other developers looking to build their portfolios
 
 It's a great way to connect with other developers and discover colleagues' projects.
+
+## Commands to start the application
+
+### Running on local host
+  -  Seed the application: 
+        - npm run seeds
+  -  Start the application:
+        - npm start
+
+## Documentation
+There is a and index.html file in the docs directory that can describe all the routes and model definitions
 
 ## Screenshots
 
