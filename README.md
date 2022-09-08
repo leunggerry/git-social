@@ -18,7 +18,6 @@ SO THAT I can seek out other new developers willing to collaborate with me so we
 - [Questions](#questions)
 
 ## Usage
-
 <a href="https://pacific-taiga-17313.herokuapp.com/">Git Social</a> is a social app for new developers to post about their projects and solicit help from other developers looking to build their portfolios
 
 It's a great way to connect with other developers and discover colleagues' projects.
