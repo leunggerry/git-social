@@ -11,14 +11,26 @@ SO THAT I can seek out other new developers willing to collaborate with me so we
 ## Table of Contents
 
 - [Usage](#usage)
+- [Technologies](#technologies)
 - [Screenshots](#screenshots)
 - [Questions](#questions)
 
 ## Usage
 
-Git Social is a social app for new developers to post about their projects and solicit help from other developers looking to build their portfolios
+<a href="https://pacific-taiga-17313.herokuapp.com/">Git Social</a> is a social app for new developers to post about their projects and solicit help from other developers looking to build their portfolios
 
 It's a great way to connect with other developers and discover colleagues' projects.
+
+## Technologies
+
+- NodeJS
+- Handlbars
+- Sequelize
+- MySQL
+- Materialize
+- GitHub
+- JSdocs
+- Radix Icons
 
 ## Screenshots
 

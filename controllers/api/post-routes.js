@@ -22,7 +22,14 @@ router.get("/", (req, res) => {
   console.log("======================");
   Post.findAll({
     order: [["created_at", "DESC"]],
-    attributes: ["id", "title", "text_body", "repo_name", "github_repo_url", "created_at"],
+    attributes: [
+      "id",
+      "title",
+      "text_body",
+      "repo_name",
+      "github_repo_url",
+      "created_at",
+    ],
     include: [
       {
         model: Comment,
@@ -59,7 +66,14 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "title", "text_body", "repo_name", "github_repo_url", "created_at"],
+    attributes: [
+      "id",
+      "title",
+      "text_body",
+      "repo_name",
+      "github_repo_url",
+      "created_at",
+    ],
     include: [
       {
         model: Comment,
@@ -98,8 +112,8 @@ router.get("/:id", (req, res) => {
  * @return {object} - post object
  */
 // @TODO took out utilities of user authenitcation session
-router.post("/", (req, res) => {
-  // router.post("/", withAuth, (req, res) => {
+
+router.post("/", withAuth, (req, res) => {
   // expects {title: 'Taskmaster', text_body: "Donec", github_repo_url: 'https://taskmaster.com/press', user_id: 1}
   console.log("user_id: " + req.session.user_id);
   console.log("title: " + req.body.title);
@@ -130,8 +144,8 @@ router.post("/", (req, res) => {
  *
  * @return {object} updated post
  */ // @Todo took out user authentication
-router.put("/:id", (req, res) => {
-  // router.put("/:id", withAuth, (req, res) => {
+
+router.put("/:id", withAuth, (req, res) => {
   Post.update(
     {
       title: req.body.title,
@@ -169,8 +183,8 @@ router.put("/:id", (req, res) => {
  * @return {object}
  */
 // @TODO took out user authentication
-router.delete("/:id", (req, res) => {
-  // router.delete("/:id", withAuth, (req, res) => {
+
+router.delete("/:id", withAuth, (req, res) => {
   console.log("id", req.params.id);
   Post.destroy({
     where: {
