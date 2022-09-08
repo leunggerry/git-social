@@ -20,7 +20,7 @@ router.get("/", (req, res) => {
   console.log(req.session);
 
   Post.findAll({
-    attributes: ["id", "title", "text_body", "created_at"],
+    attributes: ["id", "title", "text_body", "repo_name", "github_repo_url", "created_at"],
     include: [
       {
         model: User,
